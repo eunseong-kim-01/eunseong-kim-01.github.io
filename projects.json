@@ -18,7 +18,7 @@
                 "C언어 Application을 컴파일하여 ROM에 탑재 및 FPGA 보드 시연 (LED, FND 제어) "
             ],
             "troubleshooting": [
-                "문제점: C언어의 문자열(\"Stop\") 전송 시 하드웨어(UART Peripheral)가 수신하지 못함. [cite_start]원인은 CPU가 문자열의 주소(Pointer)를 보낸 반면, UART 모듈은 8비트 문자(Character) 하나만 받을 수 있었기 때문.",
+                "문제점: C언어의 문자열(\"Stop\") 전송 시 하드웨어(UART Peripheral)가 수신하지 못함. 원인은 CPU가 문자열의 주소(Pointer)를 보낸 반면, UART 모듈은 8비트 문자(Character) 하나만 받을 수 있었기 때문.",
                 "해결책: C언어에서 한 글자씩 순차적으로 전송하고 대기하는 `uart_send_string` 함수를 구현하여 해결."
             ],
             "action_video_path": "materials/project6_action_demo.mp4",
@@ -90,8 +90,8 @@
                 "SystemVerilog 기반의 UART 기능 검증 환경 구축"
             ],
             "troubleshooting": [
-                "문제점: UART Top 모듈(tb_uart_top) 검증 시, 첫 번째 데이터 전송에 대한 Loopback 테스트만 실패하고 나머지는 성공하는 현상 발생 . [cite_start]원본 데이터 0x0a (0000_1010) 전송 시 0x85 (1000_0101)가 수신됨.",
-                "원인 분석: Reset 직후 첫 데이터 전송 시 DUT 안정화 시간이 부족하여 Monitor의 TX Start bit 감지가 1 클럭 지연됨. [cite_start]이로 인해 전체 데이터 프레임이 1비트씩 밀려서(shift) 잘못된 데이터(0x85)가 수신됨 .",
+                "문제점: UART Top 모듈(tb_uart_top) 검증 시, 첫 번째 데이터 전송에 대한 Loopback 테스트만 실패하고 나머지는 성공하는 현상 발생 . 원본 데이터 0x0a (0000_1010) 전송 시 0x85 (1000_0101)가 수신됨.",
+                "원인 분석: Reset 직후 첫 데이터 전송 시 DUT 안정화 시간이 부족하여 Monitor의 TX Start bit 감지가 1 클럭 지연됨. 이로 인해 전체 데이터 프레임이 1비트씩 밀려서(shift) 잘못된 데이터(0x85)가 수신됨 .",
                 "해결책: Reset 직후 DUT 내부 안정화를 위해 충분한 대기 시간(100 클럭 사이클)을 추가하여 문제 해결 ."
             ],
             "learnings": [
@@ -124,9 +124,9 @@
             ],
             "troubleshooting": [
                 "문제점 1: 모드 변경(예: Watch -> SR04) 시 MUX로 FND 출력을 제어했음에도 이전 모드의 값이 FND에 남아있는 현상 발생.",
-                "해결책 1: 각 모듈(Watch/Stopwatch, SR04, DHT11)의 enable 신호가 비활성화될 때 내부 상태나 출력이 리셋되도록 수정. [cite_start]Top 모듈에서 모드 변경 시 해당 모듈의 리셋 신호와 ~enable 신호를 OR 게이트로 연결하여 모드가 바뀔 때마다 값이 초기화되도록 함.",
+                "해결책 1: 각 모듈(Watch/Stopwatch, SR04, DHT11)의 enable 신호가 비활성화될 때 내부 상태나 출력이 리셋되도록 수정. Top 모듈에서 모드 변경 시 해당 모듈의 리셋 신호와 ~enable 신호를 OR 게이트로 연결하여 모드가 바뀔 때마다 값이 초기화되도록 함.",
                 "문제점 2: 초음파 거리 계산 로직(`dist_reg / 58`)을 조합 로직으로 구현했을 때 Vivado에서 Timing Violation Critical Warning 발생. WNS: -1.627 ns.",
-                "해결책 2: 나눗셈 연산을 두 단계의 파이프라인으로 나누어 처리. [cite_start]첫 번째 클럭에서 거리 값(dist_reg)을 계산하고, 다음 클럭에서 나눗셈(`dist_reg / 58`)을 수행하여 결과를 레지스터(dist_div_reg)에 저장한 후 출력하도록 수정하여 타이밍 제약 만족 . WNS: 3.866 ns."
+                "해결책 2: 나눗셈 연산을 두 단계의 파이프라인으로 나누어 처리. 첫 번째 클럭에서 거리 값(dist_reg)을 계산하고, 다음 클럭에서 나눗셈(`dist_reg / 58`)을 수행하여 결과를 레지스터(dist_div_reg)에 저장한 후 출력하도록 수정하여 타이밍 제약 만족 . WNS: 3.866 ns."
             ],
             "action_video_path": "materials/project3_action_demo.mp4",
             "learnings": [
@@ -153,7 +153,7 @@
         "github_link": "https://github.com/eunseong-kim-01/UART_Watch-Stopwatch",
         "modal_details": {
             "title": "하이브리드 제어 디지털 시계 &amp; 스톱워치",
-            "summary": "FPGA 보드의 버튼/스위치와 PC의 UART 통신을 이용해 제어하는 디지털 시계 및 스톱워치입니다. [cite_start]두 제어 방식 간의 우선순위를 설정하여 안정적인 동작을 구현했습니다 .",
+            "summary": "FPGA 보드의 버튼/스위치와 PC의 UART 통신을 이용해 제어하는 디지털 시계 및 스톱워치입니다. 두 제어 방식 간의 우선순위를 설정하여 안정적인 동작을 구현했습니다 .",
             "implementations": [
                 "FPGA 보드의 버튼(Debounce 처리)과 PC의 UART 통신을 이용한 Watch/Stopwatch 제어 기능 구현 .",
                 "Watch/Stopwatch 모드 전환 시, PC(UART) 제어에 우선권을 부여하는 로직 설계.",
@@ -201,7 +201,7 @@
                 "발표"
             ],
             "troubleshooting": [
-                "문제점 1: 외식 메뉴 입력 시 네이버 지도 검색 결과를 크롤링하는 과정에서 TimeoutException 발생 . [cite_start]지도 UI가 먼저 로딩되고 다른 HTML 정보 로딩이 지연되어 CSS 선택자를 찾지 못하는 문제 발생.",
+                "문제점 1: 외식 메뉴 입력 시 네이버 지도 검색 결과를 크롤링하는 과정에서 TimeoutException 발생 . 지도 UI가 먼저 로딩되고 다른 HTML 정보 로딩이 지연되어 CSS 선택자를 찾지 못하는 문제 발생.",
                 "해결책 1: 직접 지도 페이지를 크롤링하는 대신, 네이버 검색 포털에서 '음식 이름 + 맛집'을 검색한 후, 지도 서비스로 연결되는 링크(`.bSoi3>a` 태그의 `href` 속성)만 추출하여 사용자에게 제공하는 방식으로 변경하여 해결.",
                 "문제점 2: 레시피 사이트 크롤링 시, 음식 목록(`span.link`)을 가져올 때 페이지 넘김 버튼 요소까지 함께 포함되어 다음 페이지로 넘어가지 못하고 11페이지로 이동 후 Timeout 발생하는 문제 발생.",
                 "해결책 2: CSS 선택자를 더 구체적으로 명시하여(`span.link > a[href*='goRecipeView']`) 페이지 넘김 버튼 요소를 제외하고 실제 음식 링크 요소만 선택하도록 수정하여 해결."
