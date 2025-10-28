@@ -28,6 +28,7 @@
         },
         "modal_video": {
             "title": "RISC-V Multi-Cycle 및 AMBA APB Peripheral 설계 시연 영상",
+            "message": "발표 영상을 준비 중입니다.",
             "video_path": "materials/RISCV_RV32I_CPU_MultiCycle 및 AMBA_APB_Peripheral 설계_발표영상.mkv"
         }
     }, 
@@ -169,4 +170,5 @@
         }
     }
     
+
 ]
