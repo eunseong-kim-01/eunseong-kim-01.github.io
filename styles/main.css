@@ -52,20 +52,25 @@ body {
     cursor: pointer;
     color: #333;
     z-index: 1002;
-    display: none; /* Button hidden */
+    display: none;
+    /* Button hidden */
 }
 
 /* Sidebar - Always Open */
 .sidebar {
-    width: 150px; /* Width when open */
+    width: 150px;
+    /* Width when open */
     background: var(--card-bg);
     padding: 2rem;
-    padding-top: 4rem; /* Adjust as needed */
+    padding-top: 4rem;
+    /* Adjust as needed */
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     position: fixed;
-    height: calc(100vh - 50px); /* Adjust height considering header */
+    height: calc(100vh - 50px);
+    /* Adjust height considering header */
     overflow-y: auto;
-    top: 50px; /* Position below the header */
+    top: 50px;
+    /* Position below the header */
     z-index: 999;
     /* Removed .closed state styles */
 }
@@ -73,7 +78,8 @@ body {
 .sidebar .profile {
     text-align: center;
     margin-bottom: 2rem;
-    display: block; /* Ensure profile is visible */
+    display: block;
+    /* Ensure profile is visible */
 }
 
 .sidebar .profile-img {
@@ -88,13 +94,15 @@ body {
     text-align: center;
     color: #666;
     font-style: italic;
-    display: block; /* Ensure description is visible */
+    display: block;
+    /* Ensure description is visible */
 }
 
 .sidebar-nav ul {
     list-style: none;
     padding: 0;
-    margin-top: 4rem; /* Adjust spacing */
+    margin-top: 4rem;
+    /* Adjust spacing */
 }
 
 .sidebar-nav li a:hover {
@@ -103,7 +111,8 @@ body {
 
 .sidebar-nav li a {
     display: flex;
-    align-items: flex-start; /* Align icon and text */
+    align-items: flex-start;
+    /* Align icon and text */
     gap: 10px;
     padding: 10px 15px;
     text-decoration: none;
@@ -117,7 +126,8 @@ body {
 }
 
 .sidebar-nav .nav-text {
-    visibility: visible; /* Ensure text is visible */
+    visibility: visible;
+    /* Ensure text is visible */
     opacity: 1;
     font-size: 1rem;
 }
@@ -126,7 +136,8 @@ body {
 .content {
     flex-grow: 1;
     padding: 2rem;
-    margin-left: 200px; /* Fixed margin for open sidebar (adjust if sidebar width changes) */
+    margin-left: 200px;
+    /* Fixed margin for open sidebar (adjust if sidebar width changes) */
     /* Removed .shifted state styles and transitions */
 }
 
@@ -240,7 +251,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px; /* Adjust padding as needed */
+    padding: 15px;
+    /* Adjust padding as needed */
     flex-wrap: nowrap;
     gap: 10px;
 }
@@ -315,7 +327,8 @@ body {
     align-items: center;
     font-weight: bold;
     font-size: 1.1em;
-    width: 150px; /* Adjust if needed */
+    width: 150px;
+    /* Adjust if needed */
 }
 
 .skill-tags {
@@ -351,19 +364,23 @@ body {
     padding: 2rem;
     border: 1px solid #888;
     width: 80%;
-    max-height: 90vh; /* Limit max height */
-    overflow-y: auto; /* Allow scrolling within modal */
+    max-height: 90vh;
+    /* Limit max height */
+    overflow-y: auto;
+    /* Allow scrolling within modal */
     border-radius: 10px;
     position: relative;
 }
 
 .close-btn {
     color: #aaa;
-    float: right; /* Position to the top right */
+    float: right;
+    /* Position to the top right */
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
-    position: absolute; /* Position relative to modal-content */
+    position: absolute;
+    /* Position relative to modal-content */
     top: 10px;
     right: 20px;
 }
@@ -371,7 +388,8 @@ body {
 .modal-header h2 {
     text-align: center;
     margin-top: 0;
-    padding-right: 30px; /* Add padding to prevent overlap with close button */
+    padding-right: 30px;
+    /* Add padding to prevent overlap with close button */
 }
 
 .project-images {
@@ -473,9 +491,11 @@ body {
     margin-bottom: 20px;
 }
 
-.video-container { /* For YouTube iframe */
+.video-container {
+    /* For YouTube iframe */
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    padding-bottom: 56.25%;
+    /* 16:9 aspect ratio */
     height: 0;
     overflow: hidden;
     max-width: 100%;
@@ -489,10 +509,12 @@ body {
     height: 100%;
 }
 
-.video-container-local video { /* Style for local video */
-     max-height: 70vh; /* Limit video height within modal */
-     display: block;
-     margin: auto;
+.video-container-local video {
+    /* Style for local video */
+    max-height: 70vh;
+    /* Limit video height within modal */
+    display: block;
+    margin: auto;
 }
 
 
@@ -513,4 +535,221 @@ body {
 /* Ensure footer details are always visible */
 .footer-line-detailed {
     display: block;
+}
+
+/* ================================== */
+/* Responsive Styles (Mobile First Approach - Example for max-width: 768px) */
+/* ================================== */
+
+@media (max-width: 768px) {
+
+    /* --- Header Adjustments --- */
+    .portfolio-header {
+        padding: 10px 1rem;
+        /* Reduce horizontal padding */
+    }
+
+    .portfolio-title {
+        font-size: 1.5em;
+        /* Slightly smaller title */
+        text-align: left;
+        /* Align title left as sidebar takes less space */
+        margin-left: 10px;
+        /* Add some space from the edge */
+    }
+
+    /* --- Sidebar Adjustments --- */
+    .sidebar {
+        width: 120px;
+        /* Reduce sidebar width */
+        padding: 1rem 0.5rem;
+        /* Reduce padding */
+        padding-top: 2rem;
+        height: calc(100vh - 45px);
+        /* Adjust height based on potentially smaller header */
+        top: 45px;
+        /* Adjust top position if header height changes */
+    }
+
+    .sidebar .profile-img {
+        width: 60px;
+        /* Smaller profile image */
+        height: 60px;
+    }
+
+    .sidebar .profile h3 {
+        font-size: 1em;
+        /* Smaller name font size */
+        margin-top: 5px;
+    }
+
+    .sidebar .description {
+        font-size: 0.8em;
+        /* Smaller description */
+        margin-bottom: 1rem;
+    }
+
+    .sidebar-nav ul {
+        margin-top: 1rem;
+        /* Reduce top margin */
+    }
+
+    .sidebar-nav li a {
+        padding: 8px 10px;
+        /* Smaller padding */
+        gap: 8px;
+    }
+
+    .sidebar-nav .icon {
+        font-size: 1em;
+        /* Slightly smaller icon */
+    }
+
+    .sidebar-nav .nav-text {
+        font-size: 0.9em;
+        /* Smaller nav text */
+    }
+
+    .footer-info {
+        display: none;
+        /* Hide footer on small screens to save space */
+    }
+
+    /* --- Main Content Adjustments --- */
+    .content {
+        margin-left: 130px;
+        /* Adjust margin to match new sidebar width + small gap */
+        padding: 1rem;
+        /* Reduce padding */
+    }
+
+    .section-title {
+        font-size: 1.8em;
+        /* Smaller section titles */
+        padding-bottom: 0.5rem;
+    }
+
+    /* --- Grid Layouts (Single Column) --- */
+    .info-grid,
+    .project-grid,
+    .contact-grid {
+        /* Change flex/grid to stack vertically */
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        /* Adjust gap */
+    }
+
+    /* Ensure cards take full width in single column */
+    .info-card,
+    .project-card,
+    .contact-card {
+        flex-basis: auto;
+        /* Reset flex-basis */
+        width: auto;
+        /* Allow cards to take available width */
+    }
+
+    /* --- Project Card Adjustments --- */
+    .project-card {
+        padding: 15px;
+        /* Slightly less padding */
+    }
+
+    .project-header {
+        padding: 10px;
+        /* Less padding in header */
+    }
+
+    .project-buttons {
+        /* Make buttons wrap if needed, though they might fit */
+        flex-wrap: wrap;
+        justify-content: space-around;
+        /* Distribute buttons */
+        gap: 8px;
+    }
+
+    #projects .project-btn {
+        min-width: 65px;
+        /* Slightly smaller min-width */
+        font-size: 0.8em;
+        /* Smaller button text */
+        padding: 8px 3px;
+        /* Adjust padding */
+    }
+
+    .tech-box {
+        font-size: 0.8em;
+        /* Smaller tech text */
+        padding: 8px;
+    }
+
+
+    /* --- Skills Section Adjustments --- */
+    .skills-category {
+        flex-direction: column;
+        /* Stack title and tags vertically */
+        align-items: flex-start;
+        /* Align items to the start */
+        gap: 10px;
+    }
+
+    .category-title {
+        width: auto;
+        /* Allow title to take natural width */
+        font-size: 1em;
+    }
+
+    .skill-tag {
+        font-size: 0.8em;
+        padding: 4px 10px;
+    }
+
+    /* --- Modal Adjustments --- */
+    .modal-content {
+        width: 90%;
+        /* Wider modal on small screens */
+        margin: 10% auto;
+        /* Adjust margin */
+        padding: 1rem;
+        /* Less padding */
+        max-height: 85vh;
+        /* Adjust max height */
+    }
+
+    .modal-header h2 {
+        font-size: 1.3em;
+        /* Smaller modal title */
+    }
+
+    .close-btn {
+        top: 5px;
+        right: 10px;
+        font-size: 24px;
+    }
+
+    .pdf-container,
+    .video-container,
+    .video-container-local video {
+        max-height: 65vh;
+        /* Adjust media height in modal */
+    }
+}
+
+/* Style for summary section in modal using Flexbox */
+.modal-body .summary-container {
+    display: flex;          /* Use Flexbox layout */
+    align-items: baseline; /* Align text along the baseline */
+    margin-bottom: 1em;   /* Add some space below the summary */
+}
+
+.modal-body .summary-title {
+    flex-shrink: 0;       /* Prevent title from shrinking */
+    margin-right: 0.5em;    /* Add space between title and text */
+    font-weight: bold;
+}
+
+.modal-body .summary-text {
+    /* Text will automatically take remaining space */
+    text-align: left; /* Ensure text aligns left */
 }

@@ -9,7 +9,7 @@
         "modal_details": {
             "title": "RISC-V Multi-Cycle CPU Core 및 AMBA APB Peripheral 설계",
             "summary": "Multi-Cycle RISC-V CPU Core와 AMBA APB 버스 프로토콜을 구현한 프로젝트입니다. UART Peripheral을 APB에 연결하고, SystemVerilog 검증 환경을 구축했으며, C 코드를 컴파일하여 ROM에 올려 실제 FPGA 보드에서 동작을 확인했습니다.",
-            "roles": [
+            "implementations": [
                 "RISC-V Multi-Cycle CPU Core 설계 및 명령어 타입별(R, I, S, B, U, J) 기능 검증 ",
                 "AMBA APB 버스 프로토콜 기반 시스템 설계 ",
                 "APB Slave 규격에 맞는 UART Peripheral 모듈 설계 (FIFO, Tx/Rx, APB Interface) ",
@@ -28,7 +28,6 @@
         },
         "modal_video": {
             "title": "RISC-V Multi-Cycle 및 AMBA APB Peripheral 설계 시연 영상",
-            "message": "발표 영상을 준비 중입니다.",
             "video_path": "materials/RISCV_RV32I_CPU_MultiCycle 및 AMBA_APB_Peripheral 설계_발표영상.mkv"
         }
     }, 
@@ -43,7 +42,7 @@
         "modal_details": {
             "title": "RISC-V RV32I CPU Core 설계",
             "summary": "RISC-V의 RV32I 기본 정수 명령어 세트를 처리하는 CPU 코어를 SystemVerilog로 설계하고 시뮬레이션을 통해 기능을 검증한 프로젝트입니다.",
-            "roles": [
+            "implementations": [
                 "RISC-V 명령어 집합 구조(ISA)를 분석하고 처리 로직을 설계했습니다.",
                 "CPU의 핵심 요소인 Control Unit과 Datapath를 포함한 전체 아키텍처를 설계했습니다.",
                 "R, I, S, B, U, J-Type 등 RV32I의 모든 명령어 포맷을 처리하는 로직을 구현했습니다.",
@@ -124,7 +123,7 @@
         "modal_details": {
             "title": "하이브리드 제어 디지털 시계 &amp; 스톱워치",
             "summary": "FPGA 보드의 버튼과 PC의 UART 통신을 이용해 제어하는 디지털 시계 및 스톱워치입니다.",
-            "roles": [
+            "implementations": [
                 "FPGA 보드의 버튼과 PC의 UART 통신을 이용해 제어하는 디지털 시계 및 스톱워치 설계 및 구현"
             ],
             "learnings": [
@@ -170,5 +169,4 @@
         }
     }
     
-
 ]

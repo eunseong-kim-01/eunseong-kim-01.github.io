@@ -91,29 +91,57 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'details':
                 modalShell = document.getElementById('modal-details-shell');
                 const details = project.modal_details;
-                const createListItems = (items) => items.map(item => `<li>${item}</li>`).join('');
 
+                // Helper function to create HTML list items from an array
+                const createListItems = (items) => items && items.length > 0 ? items.map(item => `<li>${item}</li>`).join('') : '';
+
+                // Build the HTML content for the details modal dynamically
+                let rolesHTML = '';
+                if (details.roles && details.roles.length > 0) {
+                    rolesHTML = `
+                        <div class="project-details">
+                            <p><strong>역할:</strong></p>
+                            <ul>${createListItems(details.roles)}</ul>
+                        </div>
+                    `;
+                }
+
+                let implementationHTML = '';
+                if (details.implementations && details.implementations.length > 0) {
+                    implementationHTML = `
+                        <div class="project-details">
+                            <p><strong>주요 구현 내용:</strong></p>
+                            <ul>${createListItems(details.implementations)}</ul>
+                        </div>
+                    `;
+                }
+
+                let learningsHTML = '';
+                if (details.learnings && details.learnings.length > 0) {
+                    learningsHTML = `
+                        <div class="project-details">
+                            <p><strong>배운 점:</strong></p>
+                            <ul>${createListItems(details.learnings)}</ul>
+                        </div>
+                    `;
+                }
+
+                // Combine all parts for the final modal content
                 modalContentHTML = `
                     <div class="modal-header">
                         <h2>${details.title}</h2>
                     </div>
                     <div class="modal-body">
-                        <p><strong>요약:</strong> ${details.summary}</p>
-                        ${details.roles && details.roles.length > 0 ? `
-                        <div class="project-details">
-                            <p><strong>역할:</strong></p>
-                            <ul>${createListItems(details.roles)}</ul>
+                        <div class="summary-container">
+                            <strong class="summary-title">요약:</strong>
+                            <span class="summary-text">${details.summary}</span>
                         </div>
-                        ` : ''}
-                        ${details.learnings && details.learnings.length > 0 ? `
-                        <div class="project-details">
-                            <p><strong>배운 점:</strong></p>
-                            <ul>${createListItems(details.learnings)}</ul>
-                        </div>
-                        ` : ''}
+                        ${rolesHTML}
+                        ${implementationHTML}
+                        ${learningsHTML}
                     </div>
                 `;
-                break;
+                break; // End of case 'details'
 
             case 'ppt':
                 modalShell = document.getElementById('modal-ppt-shell');
