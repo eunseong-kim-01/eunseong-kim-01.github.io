@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eunseong's Portfolio</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="portfolio-header">
+        <button class="toggle-btn" id="sidebar-toggle">☰</button>
+        <h1 class="portfolio-title">Eunseong's Portfolio</h1>
+    </header>
+
+
+    <div class="main-container">
+
+        <aside class="sidebar closed" id="sidebar">
+            <div class="profile">
+                <div class="profile-img"></div>
+                <h3>김은성</h3>
+            </div>
+            <p class="description">시스템 반도체<br>설계/검증</p>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#about"><span class="icon">🏠</span><span class="nav-text">About me</span></a></li>
+                    <li><a href="#projects"><span class="icon">🖥️</span><span class="nav-text">Projects</span></a></li>
+                    <li><a href="#research"><span class="icon">🔬</span>
+                            <div>Research &<br>Publications</div>
+                        </a></li>
+                    <li><a href="#education"><span class="icon">🎓</span><span class="nav-text">Education</span></a>
+                    </li>
+                    <li><a href="#skills"><span class="icon">🔧</span><span class="nav-text">Skills</span></a></li>
+                    <li><a href="#contact"><span class="icon">✉️</span><span class="nav-text">Contact</span></a></li>
+                </ul>
+            </nav>
+            <div class="footer-info">
+                <p>&copy; 2025 Eunseong Kim.<br> All Rights Reserved.</p>
+                <p>Designed & Built by Eunseong Kim.</p>
+                <p>이 사이트의 무단 복제를 금지합니다.</p>
+                <p>Hosted on GitHub Pages</p>
+            </div>
+        </aside>
+
+        <main class="content shifted" id="main-content">
+
+            <section id="about" class="section">
+                <h2 class="section-title">ABOUT ME</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <p><span>👤</span> <strong>이름</strong></p>
+                        <p>김은성</p>
+                    </div>
+                    <div class="info-card">
+                        <p><span>✉️</span> <strong>이메일</strong></p>
+                        <p>sorii1028@naver.com</p>
+                    </div>
+                    <div class="info-card">
+                        <p><span>📍</span> <strong>위치</strong></p>
+                        <p>경기도 수원시</p>
+                    </div>
+                    <div class="info-card">
+                        <p><span>🎓</span> <strong>학력</strong></p>
+                        <p>경기대학교 (전자공학과)</p>
+                    </div>
+                </div>
+
+                <div class="github-link-container">
+                    <a href="https://github.com/eunseong-kim-01" target="_blank" rel="noopener noreferrer"
+                        class="github-link-button">
+                        <span class="btn-icon">🐙</span>
+                        <span>GitHub: https://github.com/eunseong-kim-01</span>
+                    </a>
+                </div>
+            </section>
+
+            <section id="projects" class="section">
+                <h2 class="section-title">PROJECTS</h2>
+                <div class="project-grid">
+                    <div class="project-card" data-modal-target="#modal-project1">
+                        <div class="project-header">
+                            <span class="tag">하이브리드 제어</span>
+                            <span class="date">2025.00.00 ~ 00.00</span>
+                        </div>
+                        <h3>하이브리드 제어 디지털 시계 &amp; 스톱워치</h3>
+                        <p>FPGA 보드의 버튼과 PC의 UART 통신을 이용해 제어하는 디지털 시계 및 스톱워치</p>
+                        <div class="tech-box">
+                            Verilog, Vivado, Basys3
+                        </div>
+                        <div class="project-buttons">
+                            <a href="#" class="project-btn" data-modal-target="#modal-project1">
+                                <span class="btn-icon">📄</span>
+                                <span>자세히 보기</span>
+                            </a>
+                            <a href="#" class="project-btn" data-modal-target="#modal-ppt1">
+                                <span class="btn-icon">📁</span>
+                                <span>발표 자료</span>
+                            </a>
+                            <a href="#" class="project-btn" data-modal-target="#modal-video1">
+                                <span class="btn-icon">📺</span>
+                                <span>발표 영상</span>
+                            </a>
+                            <a href="https://github.com/eunseong-kim-01" target="_blank" rel="noopener noreferrer"
+                                class="project-btn">
+                                <span class="btn-icon">🐙</span>
+                                <span>Github</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-modal-target="#modal-project2">
+                        <div class="project-header">
+                            <span class="tag">다중 센서 통합</span>
+                            <span class="date">2025.00.00 ~ 00.00 (팀 프로젝트)</span>
+                        </div>
+                        <h3>다중 센서 통합 제어 시스템</h3>
+                        <p>Watch/Stopwatch, 초음파 거리 측정, 온습도 측정 기능을 하나의 FPGA 시스템으로 통합</p>
+                        <div class="tech-box">
+                            Verilog, Vivado, Basys3, HC-SR04, DHT-11
+                        </div>
+                        <div class="project-buttons">
+                            <a href="#" class="project-btn" data-modal-target="#modal-project2">
+                                <span class="btn-icon">📄</span>
+                                <span>자세히 보기</span>
+                            </a>
+                            <a href="#" class="project-btn" data-modal-target="#modal-ppt2">
+                                <span class="btn-icon">📁</span>
+                                <span>발표 자료</span>
+                            </a>
+                            <a href="#" class="project-btn" data-modal-target="#modal-video2">
+                                <span class="btn-icon">📺</span>
+                                <span>발표 영상</span>
+                            </a>
+                            <a href="https://github.com/eunseong-kim-01" target="_blank" rel="noopener noreferrer"
+                                class="project-btn">
+                                <span class="btn-icon">🐙</span>
+                                <span>Github</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-modal-target="#modal-project3">
+                        <div class="project-header">
+                            <span class="tag">UART 제어</span>
+                            <span class="date">2025.00.00 ~ 00.00 (팀 프로젝트)</span>
+                        </div>
+                        <h3>UART 제어 Counter-10000 설계 및 검증 프로젝트</h3>
+                        <p>UART로 제어되는 Counter를 위한 SystemVerilog 기반의 UART 기능 검증 환경 구축</p>
+                        <div class="tech-box">
+                            SystemVerilog, Vivado, Basys3
+                        </div>
+                        <div class="project-buttons">
+                            <a href="#" class="project-btn" data-modal-target="#modal-project3">
+                                <span class="btn-icon">📄</span>
+                                <span>자세히 보기</span>
+                            </a>
+                            <a href="#" class="project-btn" data-modal-target="#modal-ppt3">
+                                <span class="btn-icon">📁</span>
+                                <span>발표 자료</span>
+                            </a>
+                            <a href="#" class="project-btn" data-modal-target="#modal-video3">
+                                <span class="btn-icon">📺</span>
+                                <span>발표 영상</span>
+                            </a>
+                            <a href="https://github.com/eunseong-kim-01" target="_blank" rel="noopener noreferrer"
+                                class="project-btn">
+                                <span class="btn-icon">🐙</span>
+                                <span>Github</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-modal-target="#modal-project4">
+                        <div class="project-header">
+                            <span class="tag">웹 크롤링</span>
+                            <span class="date">2025.00.00 ~ 00.00 (팀 프로젝트)</span>
+                        </div>
+                        <h3>재료 맞춤형 레시피 추천 웹</h3>
+                        <p>웹 크롤링을 활용한 보유 재료 기반 요리 추천 및 맛집 정보 제공 서비스</p>
+                        <div class="tech-box">
+                            Python, Flask, Selenium, Pandas, SQLite3, HTML, ngrok
+                        </div>
+                        <div class="project-buttons">
+                            <a href="#" class="project-btn" data-modal-target="#modal-project4">
+                                <span class="btn-icon">📄</span>
+                                <span>자세히 보기</span>
+                            </a>
+                            <a href="#" class="project-btn" data-modal-target="#modal-ppt4">
+                                <span class="btn-icon">📁</span>
+                                <span>발표 자료</span>
+                            </a>
+                            <a href="#" class="project-btn" data-modal-target="#modal-video4">
+                                <span class="btn-icon">📺</span>
+                                <span>발표 영상</span>
+                            </a>
+                            <a href="https://github.com/eunseong-kim-01" target="_blank" rel="noopener noreferrer"
+                                class="project-btn">
+                                <span class="btn-icon">🐙</span>
+                                <span>Github</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-card" data-modal-target="#modal-project5">
+                        <div class="project-header">
+                            <span class="tag">CPU 설계</span>
+                            <span class="date">2025.09.01 ~ 10.02</span>
+                        </div>
+                        <h3>RISC-V RV32I CPU Core 설계</h3>
+                        <p>SystemVerilog를 이용한 RISC-V RV32I CPU 코어 설계 및 명령어별 기능 검증</p>
+                        <div class="tech-box">
+                            SystemVerilog, RISC-V
+                        </div>
+                        <div class="project-buttons">
+                            <a href="#" class="project-btn" data-modal-target="#modal-project5">
+                                <span class="btn-icon">📄</span>
+                                <span>자세히 보기</span>
+                            </a>
+                            <a href="#" class="project-btn" data-modal-target="#modal-ppt5">
+                                <span class="btn-icon">📁</span>
+                                <span>발표 자료</span>
+                            </a>
+                            <a href="#" class="project-btn" data-modal-target="#modal-video5">
+                                <span class="btn-icon">📺</span>
+                                <span>발표 영상</span>
+                            </a>
+                            <a href="https://github.com/eunseong-kim-01" target="_blank" rel="noopener noreferrer"
+                                class="project-btn">
+                                <span class="btn-icon">🐙</span>
+                                <span>Github</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="research" class="section">
+                <h2 class="section-title">Research & Publications</h2>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <span class="tag">논문 게재</span>
+                            <span class="date">2023.12.02</span>
+                        </div>
+                        <h3>실리콘 바이리스터(Biristor)의 전기적 및 열적 특성 분석</h3>
+                        <p>TCAD 시뮬레이션을 통해 실리콘 바이리스터의 전기적, 열적 특성을 분석한 연구입니다. 게이트 전극으로 턴오프 기능을 구현하고 온도 변화에 따른 소자의 동작 특성을
+                            확인했습니다.</p>
+                        <div class="tech-box">
+                            Silvaco TCAD
+                        </div>
+                        <div class="project-buttons">
+                            <a href="#" class="project-btn" data-modal-target="#modal-research-summary">
+                                <span class="btn-icon">📄</span>
+                                <span>논문 요약</span>
+                            </a>
+                            <a href="https://www.mdpi.com/2072-666X/14/12/2165" target="_blank"
+                                rel="noopener noreferrer" class="project-btn">
+                                <span class="btn-icon">🔗</span>
+                                <span>논문 링크</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="education" class="section">
+                <h2 class="section-title">Education</h2>
+                <div class="education-item">
+                    <h3>하만 세미콘 아카데미</h3>
+                    <p class="period">2025.07 ~ 2026.01 (예정)</p>
+                    <p class="description">Verilog/SystemVerilog 기반 디지털 시스템 설계 및 검증 과정</p>
+                </div>
+                <div class="education-item">
+                    <h3>경기대학교 반도체 공정 실습</h3>
+                    <p class="period">2023.04 ~ 2023.06</p>
+                    <p class="description">Photolithography, Etching, Deposition 등 반도체 공정 실습을 통해 설계부터 실제 구현까지의 과정을 이해
+                    </p>
+                </div>
+            </section>
+
+            <section id="skills" class="section">
+                <h2 class="section-title">SKILLS</h2>
+                <div class="skills-category">
+                    <div class="category-title">
+                        <span class="icon">💻</span>
+                        <span>Language</span>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Verilog</span>
+                        <span class="skill-tag">SystemVerilog</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">MATLAB (BASIC)</span>
+                    </div>
+                </div>
+                <div class="skills-category">
+                    <div class="category-title">
+                        <span class="icon">🛠️</span>
+                        <span>Tools</span>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Vivado</span>
+                        <span class="skill-tag">Quartus</span>
+                        <span class="skill-tag">SILVACO TCAD</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="section">
+                <h2 class="section-title">CONTACT</h2>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <p class="contact-item">
+                            <span class="icon">📞</span>
+                            <strong>연락처</strong>
+                            <span>010-XXXX-XXXX</span>
+                        </p>
+                        <p class="contact-item">
+                            <span class="icon">✉️</span>
+                            <strong>이메일</strong>
+                            <span>sorii1028@naver.com</span>
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="modal-project1" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header">
+                <h2>하이브리드 제어 디지털 시계 &amp; 스톱워치</h2>
+            </div>
+            <div class="modal-body">
+                <p><strong>요약:</strong> FPGA 보드의 버튼과 PC의 UART 통신을 이용해 제어하는 디지털 시계 및 스톱워치입니다.</p>
+                <div class="project-details">
+                    <p><strong>역할:</strong></p>
+                    <ul>
+                        <li>FPGA 보드의 버튼과 PC의 UART 통신을 이용해 제어하는 디지털 시계 및 스톱워치 설계 및 구현</li>
+                    </ul>
+                </div>
+                <div class="project-details">
+                    <p><strong>배운 점:</strong></p>
+                    <ul>
+                        <li>UART 통신 프로토콜을 이해하고 구현하는 방법에 대해 학습했습니다.</li>
+                        <li>팀 프로젝트를 통해 협업 능력을 기를 수 있었습니다.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-project2" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header">
+                <h2>다중 센서 통합 제어 시스템</h2>
+            </div>
+            <div class="modal-body">
+                <p><strong>요약:</strong> Watch/Stopwatch, 초음파 거리 측정, 온습도 측정 기능을 하나의 FPGA 시스템으로 통합하여 제어하는 시스템입니다.</p>
+                <div class="project-details">
+                    <p><strong>역할:</strong></p>
+                    <ul>
+                        <li>초음파 거리 측정 및 온습도 측정 기능 담당</li>
+                        <li>모든 센서로부터의 데이터를 통합하여 처리하는 로직 설계</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-project3" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header">
+                <h2>UART 제어 Counter-10000 설계 및 검증 프로젝트</h2>
+            </div>
+            <div class="modal-body">
+                <p><strong>요약:</strong> UART로 제어되는 Counter를 위한 SystemVerilog 기반의 UART 기능 검증 환경을 구축하고, Counter-10000 설계 및
+                    UART 세부 모듈 검증을 담당했습니다.</p>
+                <div class="project-details">
+                    <p><strong>역할:</strong></p>
+                    <ul>
+                        <li>Counter-10000 설계 및 UART 세부 모듈 검증 담당</li>
+                        <li>SystemVerilog 기반의 UART 기능 검증 환경 구축</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-project4" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header">
+                <h2>재료 맞춤형 레시피 추천 웹</h2>
+            </div>
+            <div class="modal-body">
+                <p><strong>요약:</strong> 웹 크롤링을 활용한 보유 재료 기반 요리 추천 및 맛집 정보를 제공하는 웹 서비스입니다.</p>
+                <div class="project-details">
+                    <p><strong>역할:</strong></p>
+                    <ul>
+                        <li>웹 크롤링을 이용한 데이터 수집 및 데이터베이스 관리</li>
+                        <li>Flask 기반의 웹 애플리케이션 개발</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-project5" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header">
+                <h2>RISC-V RV32I CPU Core 설계</h2>
+            </div>
+            <div class="modal-body">
+                <p><strong>요약:</strong> RISC-V의 RV32I 기본 정수 명령어 세트를 처리하는 CPU 코어를 SystemVerilog로 설계하고 시뮬레이션을 통해 기능을 검증한
+                    프로젝트입니다. </p>
+                <div class="project-details">
+                    <p><strong>주요 역할:</strong></p>
+                    <ul>
+                        <li>RISC-V 명령어 집합 구조(ISA)를 분석하고 처리 로직을 설계했습니다.</li>
+                        <li>CPU의 핵심 요소인 Control Unit과 Datapath를 포함한 전체 아키텍처를 설계했습니다. </li>
+                        <li>R, I, S, B, U, J-Type 등 RV32I의 모든 명령어 포맷을 처리하는 로직을 구현했습니다. </li>
+                        <li>명령어 타입별 시뮬레이션을 통해 CPU의 기능적 정확성을 검증했습니다. </li>
+                    </ul>
+                </div>
+                <div class="project-details">
+                    <p><strong>배운 점:</strong></p>
+                    <ul>
+                        <li>CPU의 동작 원리와 명령어 처리 과정을 깊이 있게 이해할 수 있었습니다.</li>
+                        <li>Sign-extension, Zero-extension 등 명령어의 세부 동작을 파형 분석을 통해 직접 확인하며 설계의 정확성을 높였습니다.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-video1" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header">
+                <h2>하이브리드 제어 디지털 시계 &amp; 스톱워치 발표 영상</h2>
+            </div>
+            <div class="modal-body">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/your-youtube-video-id-1" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-video2" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header">
+                <h2>다중 센서 통합 제어 시스템 발표 영상</h2>
+            </div>
+            <div class="modal-body">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/your-youtube-video-id-2" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-video3" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header">
+                <h2>UART 제어 Counter-10000 설계 및 검증 프로젝트 발표 영상</h2>
+            </div>
+            <div class="modal-body">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/your-youtube-video-id-3" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-video4" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header">
+                <h2>재료 맞춤형 레시피 추천 웹 발표 영상</h2>
+            </div>
+            <div class="modal-body">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/your-youtube-video-id-4" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-video5" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header">
+                <h2>RISC-V RV32I CPU Core 설계 발표 영상</h2>
+            </div>
+            <div class="modal-body">
+                <p>발표 영상을 준비 중입니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-ppt1" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header">
+                <h2>하이브리드 제어 디지털 시계 &amp; 스톱워치 발표 자료</h2>
+            </div>
+            <div class="modal-body">
+                <div class="pdf-container" style="position: relative; width: 100%; height: 70vh; overflow: hidden;">
+                    <iframe src="materials/hybrid_control_clock.pdf" width="100%" height="100%" style="border: none;">
+                    </iframe>
+                </div>
+                <p style="text-align: center; margin-top: 1rem;">
+                    PDF가 보이지 않는다면 <a href="materials/hybrid_control_clock.pdf" target="_blank">여기</a>를 클릭하여 새 창에서 열어주세요.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-ppt2" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header">
+                <h2>다중 센서 통합 제어 시스템 발표 자료</h2>
+            </div>
+            <div class="modal-body">
+                <div class="pdf-container" style="position: relative; width: 100%; height: 70vh; overflow: hidden;">
+                    <iframe src="materials/sensor_watch_stopwatch.pdf" width="100%" height="100%" style="border: none;">
+                    </iframe>
+                </div>
+                <p style="text-align: center; margin-top: 1rem;">
+                    PDF가 보이지 않는다면 <a href="materials/sensor_watch_stopwatch.pdf" target="_blank">여기</a>를 클릭하여 새 창에서
+                    열어주세요.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-ppt3" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header">
+                <h2>UART 제어 Counter-10000 설계 및 검증 프로젝트 발표 자료</h2>
+            </div>
+            <div class="modal-body">
+                <div class="pdf-container" style="position: relative; width: 100%; height: 70vh; overflow: hidden;">
+                    <iframe src="materials/uart_verification.pdf" width="100%" height="100%" style="border: none;">
+                    </iframe>
+                </div>
+                <p style="text-align: center; margin-top: 1rem;">
+                    PDF가 보이지 않는다면 <a href="materials/uart_verification.pdf" target="_blank">여기</a>를 클릭하여 새 창에서 열어주세요.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-ppt4" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header">
+                <h2>재료 맞춤형 레시피 추천 웹 발표 자료</h2>
+            </div>
+            <div class="modal-body">
+                <div class="pdf-container" style="position: relative; width: 100%; height: 70vh; overflow: hidden;">
+                    <iframe src="materials/recipe_recommendation.pdf" width="100%" height="100%" style="border: none;">
+                    </iframe>
+                </div>
+                <p style="text-align: center; margin-top: 1rem;">
+                    PDF가 보이지 않는다면 <a href="materials/recipe_recommendation.pdf" target="_blank">여기</a>를 클릭하여 새 창에서
+                    열어주세요.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-ppt5" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header">
+                <h2>RISC-V RV32I CPU Core 설계 발표 자료</h2>
+            </div>
+            <div class="modal-body">
+                <div class="pdf-container" style="position: relative; width: 100%; height: 70vh; overflow: hidden;">
+                    <iframe src="materials/RISCV_RV32I_CPU_Core.pdf" width="100%" height="100%" style="border: none;">
+                    </iframe>
+                </div>
+                <p style="text-align: center; margin-top: 1rem;">
+                    PDF가 보이지 않는다면 <a href="materials/RISCV_RV32I_CPU_Core.pdf" target="_blank">여기</a>를 클릭하여 새 창에서 열어주세요.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>
