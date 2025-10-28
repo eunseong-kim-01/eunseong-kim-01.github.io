@@ -61,9 +61,8 @@ body {
     width: 150px;
     /* Width when open */
     background: var(--card-bg);
-    padding: 2rem;
-    padding-top: 4rem;
-    /* Adjust as needed */
+    padding: 1.5rem;      /* 변경: 전체적인 내부 여백 줄이기 */
+    padding-top: 2.5rem;  /* 변경: 위쪽 여백 줄이기 */
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     position: fixed;
     height: calc(100vh - 50px);
@@ -72,14 +71,12 @@ body {
     top: 50px;
     /* Position below the header */
     z-index: 999;
-    /* Removed .closed state styles */
 }
 
 .sidebar .profile {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem; /* 변경: 프로필 아래 여백 줄이기 */
     display: block;
-    /* Ensure profile is visible */
 }
 
 .sidebar .profile-img {
@@ -95,14 +92,12 @@ body {
     color: #666;
     font-style: italic;
     display: block;
-    /* Ensure description is visible */
 }
 
 .sidebar-nav ul {
     list-style: none;
     padding: 0;
-    margin-top: 4rem;
-    /* Adjust spacing */
+    margin-top: 1.5rem; /* 변경: 네비게이션 위쪽 여백 줄이기 */
 }
 
 .sidebar-nav li a:hover {
@@ -111,10 +106,9 @@ body {
 
 .sidebar-nav li a {
     display: flex;
-    align-items: flex-start;
-    /* Align icon and text */
+    align-items: center;      /* 변경: 아이콘과 텍스트를 세로 중앙 정렬 */
     gap: 10px;
-    padding: 10px 15px;
+    padding: 10px 15px; /* 변경: 상하 패딩 다시 줄여보기 */
     text-decoration: none;
     color: var(--primary-color);
     border-radius: 5px;
@@ -123,13 +117,14 @@ body {
 
 .sidebar-nav .icon {
     font-size: 1.2em;
+    line-height: 1; /* 아이콘 자체 줄간격 조정 */
 }
 
 .sidebar-nav .nav-text {
     visibility: visible;
-    /* Ensure text is visible */
     opacity: 1;
     font-size: 1rem;
+    line-height: 1.2; /* 텍스트 줄 간격 명시적 설정 */
 }
 
 /* Main Content - Always Shifted */
@@ -137,8 +132,7 @@ body {
     flex-grow: 1;
     padding: 2rem;
     margin-left: 200px;
-    /* Fixed margin for open sidebar (adjust if sidebar width changes) */
-    /* Removed .shifted state styles and transitions */
+    /* Fixed margin for open sidebar (150px width + 50px gap) */
 }
 
 .section {
@@ -252,7 +246,6 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px;
-    /* Adjust padding as needed */
     flex-wrap: nowrap;
     gap: 10px;
 }
@@ -365,9 +358,7 @@ body {
     border: 1px solid #888;
     width: 80%;
     max-height: 90vh;
-    /* Limit max height */
     overflow-y: auto;
-    /* Allow scrolling within modal */
     border-radius: 10px;
     position: relative;
 }
@@ -375,12 +366,10 @@ body {
 .close-btn {
     color: #aaa;
     float: right;
-    /* Position to the top right */
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
     position: absolute;
-    /* Position relative to modal-content */
     top: 10px;
     right: 20px;
 }
@@ -389,7 +378,6 @@ body {
     text-align: center;
     margin-top: 0;
     padding-right: 30px;
-    /* Add padding to prevent overlap with close button */
 }
 
 .project-images {
@@ -494,8 +482,7 @@ body {
 .video-container {
     /* For YouTube iframe */
     position: relative;
-    padding-bottom: 56.25%;
-    /* 16:9 aspect ratio */
+    padding-bottom: 56.25%; /* 16:9 */
     height: 0;
     overflow: hidden;
     max-width: 100%;
@@ -512,7 +499,6 @@ body {
 .video-container-local video {
     /* Style for local video */
     max-height: 70vh;
-    /* Limit video height within modal */
     display: block;
     margin: auto;
 }
@@ -521,15 +507,16 @@ body {
 /* Footer Info in Sidebar */
 .footer-info {
     text-align: left;
-    margin-top: 4rem;
-    padding-left: 15px;
-    font-size: 0.8em;
+    margin-top: 1.5rem; /* 변경: 푸터 위쪽 여백 줄이기 */
+    padding-left: 10px; /* 변경: 왼쪽 여백 줄이기 */
+    font-size: 0.75em;  /* 변경: 글자 크기 줄이기 */
     color: #888;
-    line-height: 1.5;
+    line-height: 1.3;   /* 변경: 줄 간격 더 줄이기 */
+    overflow-wrap: break-word; /* 추가 */
 }
 
 .footer-info p {
-    margin: 4px 0;
+    margin: 2px 0; /* 변경: 문단 간격 더 줄이기 */
 }
 
 /* Ensure footer details are always visible */
@@ -546,86 +533,82 @@ body {
     /* --- Header Adjustments --- */
     .portfolio-header {
         padding: 10px 1rem;
-        /* Reduce horizontal padding */
     }
 
     .portfolio-title {
         font-size: 1.5em;
-        /* Slightly smaller title */
         text-align: left;
-        /* Align title left as sidebar takes less space */
         margin-left: 10px;
-        /* Add some space from the edge */
     }
 
     /* --- Sidebar Adjustments --- */
     .sidebar {
-        width: 120px;
-        /* Reduce sidebar width */
-        padding: 1rem 0.5rem;
-        /* Reduce padding */
+        width: 120px; /* Smaller sidebar */
+        padding: 1rem 0.5rem; /* Reduced padding */
         padding-top: 2rem;
-        height: calc(100vh - 45px);
-        /* Adjust height based on potentially smaller header */
-        top: 45px;
-        /* Adjust top position if header height changes */
+        height: calc(100vh - 45px); /* Adjust height if needed */
+        top: 45px; /* Adjust top if needed */
+    }
+
+    .sidebar .profile {
+        margin-bottom: 0.5rem; /* Further reduce profile margin */
     }
 
     .sidebar .profile-img {
         width: 60px;
-        /* Smaller profile image */
         height: 60px;
     }
 
     .sidebar .profile h3 {
         font-size: 1em;
-        /* Smaller name font size */
         margin-top: 5px;
     }
 
     .sidebar .description {
         font-size: 0.8em;
-        /* Smaller description */
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem; /* Further reduce description margin */
     }
 
     .sidebar-nav ul {
-        margin-top: 1rem;
-        /* Reduce top margin */
+        margin-top: 1rem; /* Smaller margin above nav */
     }
 
     .sidebar-nav li a {
-        padding: 8px 10px;
-        /* Smaller padding */
+        padding: 8px 10px; /* Smaller link padding */
         gap: 8px;
     }
 
     .sidebar-nav .icon {
         font-size: 1em;
-        /* Slightly smaller icon */
     }
 
     .sidebar-nav .nav-text {
         font-size: 0.9em;
-        /* Smaller nav text */
     }
 
+    /* --- [수정] Footer Info Adjustments for Small Screens --- */
     .footer-info {
-        display: none;
-        /* Hide footer on small screens to save space */
+        /* display: none; */  /* 이 부분을 삭제하거나 주석 처리 */
+        margin-top: 1rem;     /* 작은 화면에서 위쪽 여백 더 줄이기 */
+        padding-left: 8px;    /* 작은 화면에서 왼쪽 여백 더 줄이기 */
+        font-size: 0.65em;    /* 작은 화면에서 글자 크기 더 줄이기 */
+        line-height: 1.2;     /* 작은 화면에서 줄 간격 더 줄이기 */
+        color: #888;
+        overflow-wrap: break-word; /* 단어 깨짐 방지 */
+    }
+
+    .footer-info p {
+        margin: 1px 0; /* 작은 화면에서 문단 간격 더 줄이기 */
     }
 
     /* --- Main Content Adjustments --- */
     .content {
-        margin-left: 130px;
-        /* Adjust margin to match new sidebar width + small gap */
+        margin-left: 130px; /* Adjust margin for 120px sidebar */
         padding: 1rem;
-        /* Reduce padding */
     }
 
     .section-title {
         font-size: 1.8em;
-        /* Smaller section titles */
         padding-bottom: 0.5rem;
     }
 
@@ -633,70 +616,53 @@ body {
     .info-grid,
     .project-grid,
     .contact-grid {
-        /* Change flex/grid to stack vertically */
         display: flex;
         flex-direction: column;
         gap: 15px;
-        /* Adjust gap */
     }
 
-    /* Ensure cards take full width in single column */
     .info-card,
     .project-card,
     .contact-card {
         flex-basis: auto;
-        /* Reset flex-basis */
         width: auto;
-        /* Allow cards to take available width */
     }
 
     /* --- Project Card Adjustments --- */
     .project-card {
         padding: 15px;
-        /* Slightly less padding */
     }
 
     .project-header {
         padding: 10px;
-        /* Less padding in header */
     }
 
     .project-buttons {
-        /* Make buttons wrap if needed, though they might fit */
         flex-wrap: wrap;
         justify-content: space-around;
-        /* Distribute buttons */
         gap: 8px;
     }
 
     #projects .project-btn {
         min-width: 65px;
-        /* Slightly smaller min-width */
         font-size: 0.8em;
-        /* Smaller button text */
         padding: 8px 3px;
-        /* Adjust padding */
     }
 
     .tech-box {
         font-size: 0.8em;
-        /* Smaller tech text */
         padding: 8px;
     }
-
 
     /* --- Skills Section Adjustments --- */
     .skills-category {
         flex-direction: column;
-        /* Stack title and tags vertically */
         align-items: flex-start;
-        /* Align items to the start */
         gap: 10px;
     }
 
     .category-title {
         width: auto;
-        /* Allow title to take natural width */
         font-size: 1em;
     }
 
@@ -708,18 +674,13 @@ body {
     /* --- Modal Adjustments --- */
     .modal-content {
         width: 90%;
-        /* Wider modal on small screens */
         margin: 10% auto;
-        /* Adjust margin */
         padding: 1rem;
-        /* Less padding */
         max-height: 85vh;
-        /* Adjust max height */
     }
 
     .modal-header h2 {
         font-size: 1.3em;
-        /* Smaller modal title */
     }
 
     .close-btn {
@@ -732,34 +693,30 @@ body {
     .video-container,
     .video-container-local video {
         max-height: 65vh;
-        /* Adjust media height in modal */
     }
-}
+} /* End of @media query */
 
 /* Style for summary section in modal using Flexbox */
 .modal-body .summary-container {
-    display: flex;          /* Use Flexbox layout */
-    align-items: baseline; /* Align text along the baseline */
-    margin-bottom: 1em;   /* Add some space below the summary */
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 1em;
 }
 
 .modal-body .summary-title {
-    flex-shrink: 0;       /* Prevent title from shrinking */
-    margin-right: 0.5em;    /* Add space between title and text */
+    flex-shrink: 0;
+    margin-right: 0.5em;
     font-weight: bold;
 }
 
 .modal-body .summary-text {
-    /* Text will automatically take remaining space */
-    text-align: left; /* Ensure text aligns left */
+    text-align: left;
 }
 
-
-/* --- [NEW STYLE] --- */
 /* Style for inline video in Details Modal */
 .modal-body .details-video-container {
-    max-width: 90%; /* Adjust width as needed */
-    margin: 25px auto; /* Add space above and below */
+    max-width: 90%;
+    margin: 25px auto;
     background-color: #000;
     border-radius: 8px;
     overflow: hidden;
@@ -768,5 +725,5 @@ body {
 .modal-body .details-video-container video {
     display: block;
     width: 100%;
-    max-height: 50vh; /* Limit video height within the details modal */
+    max-height: 50vh;
 }
