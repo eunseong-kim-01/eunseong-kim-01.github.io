@@ -1,7 +1,8 @@
-[   {
+[
+    {
         "id": "project6",
         "tag": "CPU & APB 설계",
-        "date": "2025.10.03 ~ 2025.10.27",
+        "date": "2025.10.13 ~ 2025.10.27",
         "title": "RISC-V RV32I CPU Core (Multi-Cycle) 및 AMBA APB Peripheral 설계",
         "summary": "Multi-Cycle RISC-V CPU와 AMBA APB 버스 시스템을 설계하고, UART Peripheral을 연결하여 C 코드로 제어 및 검증",
         "tech": "SystemVerilog, RISC-V, AMBA APB, UART, C, Vivado, Basys3",
@@ -16,10 +17,15 @@
                 "SystemVerilog Class 기반 테스트벤치를 활용한 UART 모듈 기능 검증 (Tx/Rx Test) ",
                 "C언어 Application을 컴파일하여 ROM에 탑재 및 FPGA 보드 시연 (LED, FND 제어) "
             ],
+            "troubleshooting": [
+                "문제점: C언어의 문자열(\"Stop\") 전송 시 하드웨어(UART Peripheral)가 수신하지 못함. [cite_start]원인은 CPU가 문자열의 주소(Pointer)를 보낸 반면, UART 모듈은 8비트 문자(Character) 하나만 받을 수 있었기 때문.",
+                "해결책: C언어에서 한 글자씩 순차적으로 전송하고 대기하는 `uart_send_string` 함수를 구현하여 해결."
+            ],
+            "action_video_path": "materials/project6_action_demo.mp4",
             "learnings": [
-                "프로토콜(APB, UART)의 중요성과 정확한 타이밍(예: PREADY) 준수의 필요성을 하드웨어 동작을 통해 확인했습니다.",
-                "C언어의 문자열(포인터) 전송과 하드웨어의 8비트 문자 수신 간의 차이를 이해하고, `uart_send_string` 함수를 구현하여 문제를 해결하며 소프트웨어와 하드웨어의 간극을 명확히 이해했습니다.",
-                "향후 계획으로 I2C/SPI 마스터 모듈을 직접 설계하여 현재 APB 버스 시스템에 연결해 볼 계획입니다."
+                "프로토콜(APB, UART)의 중요성과 정확한 타이밍(예: PREADY) 준수의 필요성을 하드웨어 동작을 통해 확인했습니다 .",
+                "C언어의 문자열(포인터) 전송과 하드웨어의 8비트 문자 수신 간의 차이를 이해하고, `uart_send_string` 함수를 구현하여 문제를 해결하며 소프트웨어와 하드웨어의 간극을 명확히 이해했습니다 .",
+                "향후 계획으로 I2C/SPI 마스터 모듈을 직접 설계하여 현재 APB 버스 시스템에 연결해 볼 계획입니다 ."
             ]
         },
         "modal_ppt": {
@@ -30,11 +36,11 @@
             "title": "RISC-V Multi-Cycle 및 AMBA APB Peripheral 설계 시연 영상",
             "video_path": "materials/RISCV_RV32I_CPU_MultiCycle 및 AMBA_APB_Peripheral 설계_발표영상.mkv"
         }
-    }, 
+    },
     {
         "id": "project5",
         "tag": "CPU 설계",
-        "date": "2025.09.01 ~ 10.02",
+        "date": "2025.09.22 ~ 10.02",
         "title": "RISC-V RV32I CPU Core (Single-Cycle) 설계",
         "summary": "SystemVerilog를 이용한 RISC-V RV32I CPU 코어 (Single-Cycle) 설계 및 명령어별 기능 검증",
         "tech": "SystemVerilog, RISC-V",
@@ -45,12 +51,18 @@
             "implementations": [
                 "RISC-V 명령어 집합 구조(ISA)를 분석하고 처리 로직을 설계했습니다.",
                 "CPU의 핵심 요소인 Control Unit과 Datapath를 포함한 전체 아키텍처를 설계했습니다.",
-                "R, I, S, B, U, J-Type 등 RV32I의 모든 명령어 포맷을 처리하는 로직을 구현했습니다.",
+                "R, I, S, B, U, J-Type 등 RV32I의 모든 명령어 포맷을 처리하는 로직을 구현했습니다 .",
                 "명령어 타입별 시뮬레이션을 통해 CPU의 기능적 정확성을 검증했습니다."
             ],
+            "troubleshooting": [
+                "문제점 1: R-type 명령어(SLL, XOR 등) 시뮬레이션 중, 분기(branch)와 상관없는데도 btaken 신호가 1로 활성화되는 불필요한 신호 변화 발생.",
+                "해결책 1: Control Unit의 btaken 신호 생성 로직에서 `if (branch)` 조건을 추가하여, branch 관련 명령어가 아닐 때는 btaken 신호가 항상 0이 되도록 수정 .",
+                "문제점 2: `addi x0, x5, 100` 명령어 실행 시, RISC-V ISA 규격상 쓰기가 무시되어야 하는 x0 레지스터에 105 값이 쓰여지는 오류 발생 .",
+                "해결책 2: Register File 모듈의 쓰기 로직에 `if (reg_wr_en && (WA != 5'b0))` 조건을 추가하여, 목적지 레지스터 주소(WA)가 0 (x0 레지스터)일 경우에는 쓰기 동작을 명시적으로 무시하도록 수정 ."
+            ],
             "learnings": [
-                "CPU의 동작 원리와 명령어 처리 과정을 깊이 있게 이해할 수 있었습니다.",
-                "Sign-extension, Zero-extension 등 명령어의 세부 동작을 파형 분석을 통해 직접 확인하며 설계의 정확성을 높였습니다."
+                "CPU의 동작 원리와 명령어 처리 과정을 깊이 있게 이해할 수 있었습니다 .",
+                "Sign-extension, Zero-extension 등 명령어의 세부 동작을 파형 분석을 통해 직접 확인하며 설계의 정확성을 높였습니다 ."
             ]
         },
         "modal_ppt": {
@@ -61,10 +73,11 @@
             "title": "RISC-V RV32I CPU Core 설계 발표 영상",
             "message": "발표 영상을 준비 중입니다."
         }
-    },  {
-        "id": "project3",
+    },
+    {
+        "id": "project4",
         "tag": "UART 제어",
-        "date": "2025.00.00 ~ 00.00 (팀 프로젝트)",
+        "date": "2025.09.04 ~ 09.15 (2인 팀 프로젝트)",
         "title": "UART 제어 Counter-10000 설계 및 검증",
         "summary": "UART로 제어되는 Counter를 위한 SystemVerilog 기반의 UART 기능 검증 환경 구축",
         "tech": "SystemVerilog, Vivado, Basys3",
@@ -76,7 +89,14 @@
                 "Counter-10000 설계 및 UART 세부 모듈 검증 담당",
                 "SystemVerilog 기반의 UART 기능 검증 환경 구축"
             ],
-            "learnings": []
+            "troubleshooting": [
+                "문제점: UART Top 모듈(tb_uart_top) 검증 시, 첫 번째 데이터 전송에 대한 Loopback 테스트만 실패하고 나머지는 성공하는 현상 발생 . [cite_start]원본 데이터 0x0a (0000_1010) 전송 시 0x85 (1000_0101)가 수신됨.",
+                "원인 분석: Reset 직후 첫 데이터 전송 시 DUT 안정화 시간이 부족하여 Monitor의 TX Start bit 감지가 1 클럭 지연됨. [cite_start]이로 인해 전체 데이터 프레임이 1비트씩 밀려서(shift) 잘못된 데이터(0x85)가 수신됨 .",
+                "해결책: Reset 직후 DUT 내부 안정화를 위해 충분한 대기 시간(100 클럭 사이클)을 추가하여 문제 해결 ."
+            ],
+            "learnings": [
+                "Bottom-Up 검증 전략을 적용하여 서브 모듈(UART_TX, UART_RX, FIFO)부터 검증하고 상위 모듈(UART_TOP)을 검증함으로써 효율적인 디버깅 및 검증 환경 구축 경험 ."
+            ]
         },
         "modal_ppt": {
             "title": "UART 제어 Counter-10000 설계 및 검증 발표 자료",
@@ -86,22 +106,33 @@
             "title": "UART 제어 Counter-10000 설계 및 검증 발표 영상",
             "message": "발표 영상을 준비 중입니다."
         }
-    },    {
-        "id": "project2",
+    },
+    {
+        "id": "project3",
         "tag": "다중 센서 통합",
-        "date": "2025.00.00 ~ 00.00 (팀 프로젝트)",
+        "date": "2025.08.19 ~ 08.29 (4인 팀 프로젝트)",
         "title": "다중 센서 통합 제어 시스템",
         "summary": "Watch/Stopwatch, 초음파 거리 측정, 온습도 측정 기능을 하나의 FPGA 시스템으로 통합",
         "tech": "Verilog, Vivado, Basys3, HC-SR04, DHT-11",
         "github_link": "https://github.com/eunseong-kim-01/UART_WatchStopwatch_HC-SR04_DHT-11",
         "modal_details": {
             "title": "다중 센서 통합 제어 시스템",
-            "summary": "Watch/Stopwatch, 초음파 거리 측정, 온습도 측정 기능을 하나의 FPGA 시스템으로 통합하여 제어하는 시스템입니다.",
+            "summary": "Watch/Stopwatch, 초음파 거리 측정(HC-SR04), 온습도 측정(DHT11) 기능을 하나의 FPGA 시스템으로 통합하여 제어하고, UART 통신으로 PC와 상호작용하는 시스템입니다.",
             "roles": [
-                "초음파 거리 측정 및 온습도 측정 기능 담당",
-                "모든 센서로부터의 데이터를 통합하여 처리하는 로직 설계"
+                "초음파 거리 측정(HC-SR04) 및 온습도 측정(DHT11) 기능 담당",
+                "모든 센서 및 기능 모듈로부터의 데이터를 통합하여 처리하고 출력(FND, LED, UART)하는 Top 모듈 로직 설계"
             ],
-            "learnings": []
+            "troubleshooting": [
+                "문제점 1: 모드 변경(예: Watch -> SR04) 시 MUX로 FND 출력을 제어했음에도 이전 모드의 값이 FND에 남아있는 현상 발생.",
+                "해결책 1: 각 모듈(Watch/Stopwatch, SR04, DHT11)의 enable 신호가 비활성화될 때 내부 상태나 출력이 리셋되도록 수정. [cite_start]Top 모듈에서 모드 변경 시 해당 모듈의 리셋 신호와 ~enable 신호를 OR 게이트로 연결하여 모드가 바뀔 때마다 값이 초기화되도록 함.",
+                "문제점 2: 초음파 거리 계산 로직(`dist_reg / 58`)을 조합 로직으로 구현했을 때 Vivado에서 Timing Violation Critical Warning 발생. WNS: -1.627 ns.",
+                "해결책 2: 나눗셈 연산을 두 단계의 파이프라인으로 나누어 처리. [cite_start]첫 번째 클럭에서 거리 값(dist_reg)을 계산하고, 다음 클럭에서 나눗셈(`dist_reg / 58`)을 수행하여 결과를 레지스터(dist_div_reg)에 저장한 후 출력하도록 수정하여 타이밍 제약 만족 . WNS: 3.866 ns."
+            ],
+            "action_video_path": "materials/project3_action_demo.mp4",
+            "learnings": [
+                "여러 기능을 하나의 시스템으로 통합하는 과정에서 모듈 간 인터페이스 및 제어 신호 설계의 중요성을 학습했습니다.",
+                "하드웨어 설계 시 조합 로직의 복잡성이 타이밍에 미치는 영향을 이해하고 파이프라이닝을 통해 성능을 개선하는 방법을 경험했습니다."
+            ]
         },
         "modal_ppt": {
             "title": "다중 센서 통합 제어 시스템 발표 자료",
@@ -113,22 +144,34 @@
         }
     },
     {
-        "id": "project1",
+        "id": "project2",
         "tag": "하이브리드 제어",
-        "date": "2025.00.00 ~ 00.00",
+        "date": "2025.08.04 ~ 08.18",
         "title": "하이브리드 제어 디지털 시계 &amp; 스톱워치 설계",
         "summary": "FPGA 보드의 버튼과 PC의 UART 통신을 이용해 제어하는 디지털 시계 및 스톱워치 설계",
         "tech": "Verilog, Vivado, Basys3",
         "github_link": "https://github.com/eunseong-kim-01/UART_Watch-Stopwatch",
         "modal_details": {
             "title": "하이브리드 제어 디지털 시계 &amp; 스톱워치",
-            "summary": "FPGA 보드의 버튼과 PC의 UART 통신을 이용해 제어하는 디지털 시계 및 스톱워치입니다.",
+            "summary": "FPGA 보드의 버튼/스위치와 PC의 UART 통신을 이용해 제어하는 디지털 시계 및 스톱워치입니다. [cite_start]두 제어 방식 간의 우선순위를 설정하여 안정적인 동작을 구현했습니다 .",
             "implementations": [
-                "FPGA 보드의 버튼과 PC의 UART 통신을 이용해 제어하는 디지털 시계 및 스톱워치 설계 및 구현"
+                "FPGA 보드의 버튼(Debounce 처리)과 PC의 UART 통신을 이용한 Watch/Stopwatch 제어 기능 구현 .",
+                "Watch/Stopwatch 모드 전환 시, PC(UART) 제어에 우선권을 부여하는 로직 설계.",
+                "UART 통신 모듈(Tx/Rx, FIFO, Baud Tick Gen) 설계 및 구현.",
+                "PC 입력 명령어(ASCII 문자)를 해석하여 내부 제어 신호(Pulse)로 변환하는 Interpreter 모듈 설계.",
+                "7-Segment Display에 시간 정보 표시 기능 구현."
             ],
+            "troubleshooting": [
+                "문제점 1: 물리 스위치를 통한 모드 전환과 UART 명령어를 통한 모드 전환 간의 충돌로 인해 모드 변경 오류 발생 .",
+                "해결책 1: UART로 모드 전환 명령('m') 수신 시 'pc_mode_lock' 플래그를 설정하여, 이후 물리 스위치의 상태 변경은 다음 리셋 전까지 무시하도록 PC 제어에 우선권을 부여하여 해결.",
+                "문제점 2: UART 명령어 입력 시, 한 번의 입력에도 불구하고 해당 명령이 매 클럭마다 반복 실행되는 오작동 발생 .",
+                "해결책 2: UART Rx FIFO의 'rx_empty' 신호 변화를 감지하는 Edge Detector를 구현하여, FIFO에 새로운 데이터가 들어오는 순간에만 1 클럭 동안 유지되는 Pulse 신호(w_rx_not_empty_tick)를 생성하고 Interpreter가 이 Pulse 신호에만 반응하도록 수정하여 해결."
+            ],
+            "action_video_path": "materials/project2_action_demo.mp4",
             "learnings": [
-                "UART 통신 프로토콜을 이해하고 구현하는 방법에 대해 학습했습니다.",
-                "팀 프로젝트를 통해 협업 능력을 기를 수 있었습니다."
+                "UART 통신 프로토콜을 이해하고 Verilog로 직접 구현하는 경험을 쌓았습니다.",
+                "다중 입력 소스(물리 버튼/스위치, UART)를 처리하고 제어 우선순위를 관리하는 로직 설계 방법을 학습했습니다.",
+                "Debounce, Edge Detection 등 하드웨어 설계 시 고려해야 할 실제적인 문제 해결 능력을 향상시켰습니다."
             ]
         },
         "modal_ppt": {
@@ -140,24 +183,35 @@
             "message": "발표 영상을 준비 중입니다."
         }
     },
-
-  
     {
-        "id": "project4",
+        "id": "project1",
         "tag": "웹 크롤링",
-        "date": "2025.00.00 ~ 00.00 (팀 프로젝트)",
+        "date": "2025.07.18 ~ 07.23 (4인 팀 프로젝트)",
         "title": "재료 맞춤형 레시피 추천 웹",
         "summary": "웹 크롤링을 활용한 보유 재료 기반 요리 추천 및 맛집 정보 제공 서비스",
         "tech": "Python, Flask, Selenium, Pandas, SQLite3, HTML, ngrok",
         "github_link": "https://github.com/eunseong-kim-01/Ingredient-Recipe-Finder",
         "modal_details": {
             "title": "재료 맞춤형 레시피 추천 웹",
-            "summary": "웹 크롤링을 활용한 보유 재료 기반 요리 추천 및 맛집 정보를 제공하는 웹 서비스입니다.",
+            "summary": "보유 재료 기반으로 만들 수 있는 요리를 추천하고, 레시피, 관련 영상, 부족한 재료 구매 정보 및 주변 맛집 정보까지 제공하는 웹 서비스입니다.",
             "roles": [
-                "웹 크롤링을 이용한 데이터 수집 및 데이터베이스 관리",
-                "Flask 기반의 웹 애플리케이션 개발"
+                "웹 크롤링(Selenium)을 이용한 데이터 수집 (레시피 사이트, 유튜브) 및 데이터베이스(SQLite) 관리",
+                "Flask 기반의 웹 애플리케이션 개발 (HTML 기초 구축 및 완성, 라우팅)",
+                "ngrok을 이용한 웹 서비스 배포",
+                "발표"
             ],
-            "learnings": []
+            "troubleshooting": [
+                "문제점 1: 외식 메뉴 입력 시 네이버 지도 검색 결과를 크롤링하는 과정에서 TimeoutException 발생 . [cite_start]지도 UI가 먼저 로딩되고 다른 HTML 정보 로딩이 지연되어 CSS 선택자를 찾지 못하는 문제 발생.",
+                "해결책 1: 직접 지도 페이지를 크롤링하는 대신, 네이버 검색 포털에서 '음식 이름 + 맛집'을 검색한 후, 지도 서비스로 연결되는 링크(`.bSoi3>a` 태그의 `href` 속성)만 추출하여 사용자에게 제공하는 방식으로 변경하여 해결.",
+                "문제점 2: 레시피 사이트 크롤링 시, 음식 목록(`span.link`)을 가져올 때 페이지 넘김 버튼 요소까지 함께 포함되어 다음 페이지로 넘어가지 못하고 11페이지로 이동 후 Timeout 발생하는 문제 발생.",
+                "해결책 2: CSS 선택자를 더 구체적으로 명시하여(`span.link > a[href*='goRecipeView']`) 페이지 넘김 버튼 요소를 제외하고 실제 음식 링크 요소만 선택하도록 수정하여 해결."
+            ],
+            "action_video_path": "materials/project1_action_demo.mp4", 
+            "learnings": [
+                "Python Flask를 이용한 웹 서버 구축 및 HTML 연동 방법을 배웠습니다.",
+                "Selenium을 활용한 동적 웹 페이지 크롤링 기법과 데이터 처리(Pandas, SQLite) 과정을 익혔습니다.",
+                "팀 프로젝트를 통해 협업 및 문제 해결 능력을 향상시켰습니다."
+            ]
         },
         "modal_ppt": {
             "title": "재료 맞춤형 레시피 추천 웹 발표 자료",
@@ -168,5 +222,4 @@
             "message": "발표 영상을 준비 중입니다."
         }
     }
-    
 ]

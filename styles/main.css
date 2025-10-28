@@ -753,3 +753,20 @@ body {
     /* Text will automatically take remaining space */
     text-align: left; /* Ensure text aligns left */
 }
+
+
+/* --- [NEW STYLE] --- */
+/* Style for inline video in Details Modal */
+.modal-body .details-video-container {
+    max-width: 90%; /* Adjust width as needed */
+    margin: 25px auto; /* Add space above and below */
+    background-color: #000;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.modal-body .details-video-container video {
+    display: block;
+    width: 100%;
+    max-height: 50vh; /* Limit video height within the details modal */
+}
