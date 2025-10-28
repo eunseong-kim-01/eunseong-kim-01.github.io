@@ -44,7 +44,7 @@ body {
     margin: 0;
 }
 
-/* Sidebar Toggle Button */
+/* Sidebar Toggle Button - Hidden */
 .toggle-btn {
     font-size: 2rem;
     background: none;
@@ -52,26 +52,28 @@ body {
     cursor: pointer;
     color: #333;
     z-index: 1002;
+    display: none; /* Button hidden */
 }
 
-/* Sidebar */
+/* Sidebar - Always Open */
 .sidebar {
-    width: 150px;
+    width: 150px; /* Width when open */
     background: var(--card-bg);
     padding: 2rem;
-    padding-top: 4rem;
+    padding-top: 4rem; /* Adjust as needed */
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     position: fixed;
-    height: 100vh;
+    height: calc(100vh - 50px); /* Adjust height considering header */
     overflow-y: auto;
-    top: 50px;
-    height: calc(100vh - 50px);
+    top: 50px; /* Position below the header */
     z-index: 999;
+    /* Removed .closed state styles */
 }
 
 .sidebar .profile {
     text-align: center;
     margin-bottom: 2rem;
+    display: block; /* Ensure profile is visible */
 }
 
 .sidebar .profile-img {
@@ -86,12 +88,13 @@ body {
     text-align: center;
     color: #666;
     font-style: italic;
+    display: block; /* Ensure description is visible */
 }
 
 .sidebar-nav ul {
     list-style: none;
     padding: 0;
-    margin-top: 4rem;
+    margin-top: 4rem; /* Adjust spacing */
 }
 
 .sidebar-nav li a:hover {
@@ -100,7 +103,7 @@ body {
 
 .sidebar-nav li a {
     display: flex;
-    align-items: flex-start;
+    align-items: flex-start; /* Align icon and text */
     gap: 10px;
     padding: 10px 15px;
     text-decoration: none;
@@ -113,47 +116,18 @@ body {
     font-size: 1.2em;
 }
 
-/* Sidebar in closed state */
-.sidebar.closed {
-    width: 150px;
-    padding: 2rem 0.5rem;
-}
-
-.sidebar.closed .profile,
-.sidebar.closed .description {
-    display: none;
-}
-
-.sidebar.closed .sidebar-nav li a {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    text-align: left;
-    gap: 10px;
-}
-
-.sidebar.closed .sidebar-nav .nav-text {
-    visibility: visible;
+.sidebar-nav .nav-text {
+    visibility: visible; /* Ensure text is visible */
     opacity: 1;
     font-size: 1rem;
 }
 
-/* Main Content */
+/* Main Content - Always Shifted */
 .content {
     flex-grow: 1;
     padding: 2rem;
-    margin-left: 200px !important;
-    /* Force this style to apply */
-    /* transition: margin-left 0.3s ease-in-out; */
-    /* Removed to fix rendering bug */
-}
-
-/* Main Content in shifted state (when sidebar is closed) */
-.content.shifted {
-    margin-left: 150px !important;
-    /* Force this style to apply */
-    /* transition: margin-left 0.5s ease; */
-    /* Removed to fix rendering bug */
+    margin-left: 200px; /* Fixed margin for open sidebar (adjust if sidebar width changes) */
+    /* Removed .shifted state styles and transitions */
 }
 
 .section {
@@ -162,7 +136,6 @@ body {
     border-bottom: 1px solid var(--border-color);
 }
 
-/* Remove border from the very last section */
 .section:last-child {
     border-bottom: none;
 }
@@ -178,7 +151,7 @@ body {
 /* About Section */
 .info-grid {
     display: flex;
-    flex-wrap: wrap; /* Allow cards to wrap into multiple lines */
+    flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
 }
@@ -190,9 +163,8 @@ body {
     padding: 20px;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    flex: 1 1 250px; /* Allow cards to grow and wrap */
+    flex: 1 1 250px;
 }
-
 
 .info-card p {
     margin: 5px 0;
@@ -201,6 +173,47 @@ body {
 .info-card span {
     font-size: 1.2em;
     margin-right: 5px;
+}
+
+.info-card a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.info-card a:hover {
+    text-decoration: underline;
+}
+
+/* GitHub Link Button */
+.github-link-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.github-link-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 95%;
+    max-width: 1100px;
+    padding: 12px 20px;
+    background-color: #95b3d1;
+    border: 1px solid #87a6c5;
+    border-radius: 8px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.github-link-button:hover {
+    background-color: #a6b5da;
+}
+
+.github-link-button .btn-icon {
+    font-size: 1.2em;
 }
 
 /* Projects Section */
@@ -227,7 +240,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
+    padding: 15px; /* Adjust padding as needed */
     flex-wrap: nowrap;
     gap: 10px;
 }
@@ -302,7 +315,7 @@ body {
     align-items: center;
     font-weight: bold;
     font-size: 1.1em;
-    width: 150px;
+    width: 150px; /* Adjust if needed */
 }
 
 .skill-tags {
@@ -338,23 +351,27 @@ body {
     padding: 2rem;
     border: 1px solid #888;
     width: 80%;
-    max-height: 90vh;
-    overflow-y: auto;
+    max-height: 90vh; /* Limit max height */
+    overflow-y: auto; /* Allow scrolling within modal */
     border-radius: 10px;
     position: relative;
 }
 
 .close-btn {
     color: #aaa;
-    float: right;
+    float: right; /* Position to the top right */
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
+    position: absolute; /* Position relative to modal-content */
+    top: 10px;
+    right: 20px;
 }
 
 .modal-header h2 {
     text-align: center;
     margin-top: 0;
+    padding-right: 30px; /* Add padding to prevent overlap with close button */
 }
 
 .project-images {
@@ -381,17 +398,14 @@ body {
     background-color: #f8f8f8;
 }
 
-/* Container for the buttons */
 .project-buttons {
     display: flex;
     justify-content: center;
     gap: 10px;
     margin-top: 20px;
     padding: 0 10px;
-    /* Add horizontal padding */
 }
 
-/* Default button style (HORIZONTAL - for Research section) */
 .project-btn {
     display: flex;
     align-items: center;
@@ -411,7 +425,7 @@ body {
     background-color: #e3f2fd;
 }
 
-/* Specific button style for the PROJECTS section ONLY (VERTICAL) */
+/* Specific button style for PROJECTS section (VERTICAL) */
 #projects .project-btn {
     flex-direction: column;
     justify-content: center;
@@ -459,9 +473,9 @@ body {
     margin-bottom: 20px;
 }
 
-.video-container {
+.video-container { /* For YouTube iframe */
     position: relative;
-    padding-bottom: 56.25%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
     height: 0;
     overflow: hidden;
     max-width: 100%;
@@ -475,12 +489,18 @@ body {
     height: 100%;
 }
 
+.video-container-local video { /* Style for local video */
+     max-height: 70vh; /* Limit video height within modal */
+     display: block;
+     margin: auto;
+}
+
+
+/* Footer Info in Sidebar */
 .footer-info {
     text-align: left;
-    /* 가운데 정렬에서 왼쪽 정렬로 변경 */
     margin-top: 4rem;
     padding-left: 15px;
-    /* 왼쪽 여백 추가 */
     font-size: 0.8em;
     color: #888;
     line-height: 1.5;
@@ -490,48 +510,7 @@ body {
     margin: 4px 0;
 }
 
-/* When the sidebar is closed, hide the detailed footer lines */
-.sidebar.closed .footer-line-detailed {
-    display: none;
-}
-
-.info-card a {
-    color: var(--primary-color);
-    text-decoration: none;
-}
-
-.info-card a:hover {
-    text-decoration: underline;
-}
-
-/* Styles for the new wide GitHub button */
-.github-link-container {
-    text-align: center;
-    margin-top: 30px; /* Increased margin for more space */
-}
-
-.github-link-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 95%; /* Make it wide */
-    max-width: 1100px; /* Approximate width of 4 cards + gaps */
-    padding: 12px 20px;
-    background-color: #95b3d1; /* GitHub dark color */
-    border: 1px solid #87a6c5;
-    border-radius: 8px;
-    color: #ffffff; /* White text */
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1em;
-    transition: background-color 0.3s ease;
-}
-
-.github-link-button:hover {
-    background-color: #a6b5da; /* Slightly lighter on hover */
-}
-
-.github-link-button .btn-icon {
-    font-size: 1.2em;
+/* Ensure footer details are always visible */
+.footer-line-detailed {
+    display: block;
 }

@@ -1,0 +1,172 @@
+[   {
+        "id": "project6",
+        "tag": "CPU & APB 설계",
+        "date": "2025.10.03 ~ 2025.10.27",
+        "title": "RISC-V RV32I CPU Core (Multi-Cycle) 및 AMBA APB Peripheral 설계",
+        "summary": "Multi-Cycle RISC-V CPU와 AMBA APB 버스 시스템을 설계하고, UART Peripheral을 연결하여 C 코드로 제어 및 검증",
+        "tech": "SystemVerilog, RISC-V, AMBA APB, UART, C, Vivado, Basys3",
+        "github_link": "https://github.com/eunseong-kim-01/RISC-V-RV32I-CPU-Multi-Cycle-AMBA-APB-Peripheral",
+        "modal_details": {
+            "title": "RISC-V Multi-Cycle CPU Core 및 AMBA APB Peripheral 설계",
+            "summary": "Multi-Cycle RISC-V CPU Core와 AMBA APB 버스 프로토콜을 구현한 프로젝트입니다. UART Peripheral을 APB에 연결하고, SystemVerilog 검증 환경을 구축했으며, C 코드를 컴파일하여 ROM에 올려 실제 FPGA 보드에서 동작을 확인했습니다.",
+            "roles": [
+                "RISC-V Multi-Cycle CPU Core 설계 및 명령어 타입별(R, I, S, B, U, J) 기능 검증 ",
+                "AMBA APB 버스 프로토콜 기반 시스템 설계 ",
+                "APB Slave 규격에 맞는 UART Peripheral 모듈 설계 (FIFO, Tx/Rx, APB Interface) ",
+                "SystemVerilog Class 기반 테스트벤치를 활용한 UART 모듈 기능 검증 (Tx/Rx Test) ",
+                "C언어 Application을 컴파일하여 ROM에 탑재 및 FPGA 보드 시연 (LED, FND 제어) "
+            ],
+            "learnings": [
+                "프로토콜(APB, UART)의 중요성과 정확한 타이밍(예: PREADY) 준수의 필요성을 하드웨어 동작을 통해 확인했습니다.",
+                "C언어의 문자열(포인터) 전송과 하드웨어의 8비트 문자 수신 간의 차이를 이해하고, `uart_send_string` 함수를 구현하여 문제를 해결하며 소프트웨어와 하드웨어의 간극을 명확히 이해했습니다.",
+                "향후 계획으로 I2C/SPI 마스터 모듈을 직접 설계하여 현재 APB 버스 시스템에 연결해 볼 계획입니다."
+            ]
+        },
+        "modal_ppt": {
+            "title": "RISC-V Multi-Cycle 및 AMBA APB Peripheral 설계 발표 자료",
+            "path": "materials/RISCV_RV32I_CPU_MultiCycle 및 AMBA_APB_Peripheral 설계_발표자료.pdf"
+        },
+        "modal_video": {
+            "title": "RISC-V Multi-Cycle 및 AMBA APB Peripheral 설계 시연 영상",
+            "video_path": "materials/RISCV_RV32I_CPU_MultiCycle 및 AMBA_APB_Peripheral 설계_발표영상.mkv"
+        }
+    }, 
+    {
+        "id": "project5",
+        "tag": "CPU 설계",
+        "date": "2025.09.01 ~ 10.02",
+        "title": "RISC-V RV32I CPU Core (Single-Cycle) 설계",
+        "summary": "SystemVerilog를 이용한 RISC-V RV32I CPU 코어 (Single-Cycle) 설계 및 명령어별 기능 검증",
+        "tech": "SystemVerilog, RISC-V",
+        "github_link": "https://github.com/eunseong-kim-01/RISC-V-RV32I-CPU-Single-Cycle",
+        "modal_details": {
+            "title": "RISC-V RV32I CPU Core 설계",
+            "summary": "RISC-V의 RV32I 기본 정수 명령어 세트를 처리하는 CPU 코어를 SystemVerilog로 설계하고 시뮬레이션을 통해 기능을 검증한 프로젝트입니다.",
+            "roles": [
+                "RISC-V 명령어 집합 구조(ISA)를 분석하고 처리 로직을 설계했습니다.",
+                "CPU의 핵심 요소인 Control Unit과 Datapath를 포함한 전체 아키텍처를 설계했습니다.",
+                "R, I, S, B, U, J-Type 등 RV32I의 모든 명령어 포맷을 처리하는 로직을 구현했습니다.",
+                "명령어 타입별 시뮬레이션을 통해 CPU의 기능적 정확성을 검증했습니다."
+            ],
+            "learnings": [
+                "CPU의 동작 원리와 명령어 처리 과정을 깊이 있게 이해할 수 있었습니다.",
+                "Sign-extension, Zero-extension 등 명령어의 세부 동작을 파형 분석을 통해 직접 확인하며 설계의 정확성을 높였습니다."
+            ]
+        },
+        "modal_ppt": {
+            "title": "RISC-V RV32I CPU Core 설계 발표 자료",
+            "path": "materials/RISCV_RV32I_CPU_Core_SIngleCycle.pdf"
+        },
+        "modal_video": {
+            "title": "RISC-V RV32I CPU Core 설계 발표 영상",
+            "message": "발표 영상을 준비 중입니다."
+        }
+    },  {
+        "id": "project3",
+        "tag": "UART 제어",
+        "date": "2025.00.00 ~ 00.00 (팀 프로젝트)",
+        "title": "UART 제어 Counter-10000 설계 및 검증",
+        "summary": "UART로 제어되는 Counter를 위한 SystemVerilog 기반의 UART 기능 검증 환경 구축",
+        "tech": "SystemVerilog, Vivado, Basys3",
+        "github_link": "https://github.com/eunseong-kim-01/Counter_10000_verification",
+        "modal_details": {
+            "title": "UART 제어 Counter-10000 설계 및 검증",
+            "summary": "UART로 제어되는 Counter를 위한 SystemVerilog 기반의 UART 기능 검증 환경을 구축하고, Counter-10000 설계 및 UART 세부 모듈 검증을 담당했습니다.",
+            "roles": [
+                "Counter-10000 설계 및 UART 세부 모듈 검증 담당",
+                "SystemVerilog 기반의 UART 기능 검증 환경 구축"
+            ],
+            "learnings": []
+        },
+        "modal_ppt": {
+            "title": "UART 제어 Counter-10000 설계 및 검증 발표 자료",
+            "path": "materials/UART_Verification.pdf"
+        },
+        "modal_video": {
+            "title": "UART 제어 Counter-10000 설계 및 검증 발표 영상",
+            "message": "발표 영상을 준비 중입니다."
+        }
+    },    {
+        "id": "project2",
+        "tag": "다중 센서 통합",
+        "date": "2025.00.00 ~ 00.00 (팀 프로젝트)",
+        "title": "다중 센서 통합 제어 시스템",
+        "summary": "Watch/Stopwatch, 초음파 거리 측정, 온습도 측정 기능을 하나의 FPGA 시스템으로 통합",
+        "tech": "Verilog, Vivado, Basys3, HC-SR04, DHT-11",
+        "github_link": "https://github.com/eunseong-kim-01/UART_WatchStopwatch_HC-SR04_DHT-11",
+        "modal_details": {
+            "title": "다중 센서 통합 제어 시스템",
+            "summary": "Watch/Stopwatch, 초음파 거리 측정, 온습도 측정 기능을 하나의 FPGA 시스템으로 통합하여 제어하는 시스템입니다.",
+            "roles": [
+                "초음파 거리 측정 및 온습도 측정 기능 담당",
+                "모든 센서로부터의 데이터를 통합하여 처리하는 로직 설계"
+            ],
+            "learnings": []
+        },
+        "modal_ppt": {
+            "title": "다중 센서 통합 제어 시스템 발표 자료",
+            "path": "materials/sensor_watch_stopwatch.pdf"
+        },
+        "modal_video": {
+            "title": "다중 센서 통합 제어 시스템 발표 영상",
+            "message": "발표 영상을 준비 중입니다."
+        }
+    },
+    {
+        "id": "project1",
+        "tag": "하이브리드 제어",
+        "date": "2025.00.00 ~ 00.00",
+        "title": "하이브리드 제어 디지털 시계 &amp; 스톱워치 설계",
+        "summary": "FPGA 보드의 버튼과 PC의 UART 통신을 이용해 제어하는 디지털 시계 및 스톱워치 설계",
+        "tech": "Verilog, Vivado, Basys3",
+        "github_link": "https://github.com/eunseong-kim-01/UART_Watch-Stopwatch",
+        "modal_details": {
+            "title": "하이브리드 제어 디지털 시계 &amp; 스톱워치",
+            "summary": "FPGA 보드의 버튼과 PC의 UART 통신을 이용해 제어하는 디지털 시계 및 스톱워치입니다.",
+            "roles": [
+                "FPGA 보드의 버튼과 PC의 UART 통신을 이용해 제어하는 디지털 시계 및 스톱워치 설계 및 구현"
+            ],
+            "learnings": [
+                "UART 통신 프로토콜을 이해하고 구현하는 방법에 대해 학습했습니다.",
+                "팀 프로젝트를 통해 협업 능력을 기를 수 있었습니다."
+            ]
+        },
+        "modal_ppt": {
+            "title": "하이브리드 제어 디지털 시계 &amp; 스톱워치 설계 발표 자료",
+            "path": "materials/hybrid_control_clock.pdf"
+        },
+        "modal_video": {
+            "title": "하이브리드 제어 디지털 시계 &amp; 스톱워치 설계 발표 영상",
+            "message": "발표 영상을 준비 중입니다."
+        }
+    },
+
+  
+    {
+        "id": "project4",
+        "tag": "웹 크롤링",
+        "date": "2025.00.00 ~ 00.00 (팀 프로젝트)",
+        "title": "재료 맞춤형 레시피 추천 웹",
+        "summary": "웹 크롤링을 활용한 보유 재료 기반 요리 추천 및 맛집 정보 제공 서비스",
+        "tech": "Python, Flask, Selenium, Pandas, SQLite3, HTML, ngrok",
+        "github_link": "https://github.com/eunseong-kim-01/Ingredient-Recipe-Finder",
+        "modal_details": {
+            "title": "재료 맞춤형 레시피 추천 웹",
+            "summary": "웹 크롤링을 활용한 보유 재료 기반 요리 추천 및 맛집 정보를 제공하는 웹 서비스입니다.",
+            "roles": [
+                "웹 크롤링을 이용한 데이터 수집 및 데이터베이스 관리",
+                "Flask 기반의 웹 애플리케이션 개발"
+            ],
+            "learnings": []
+        },
+        "modal_ppt": {
+            "title": "재료 맞춤형 레시피 추천 웹 발표 자료",
+            "path": "materials/recipe_recommendation.pdf"
+        },
+        "modal_video": {
+            "title": "재료 맞춤형 레시피 추천 웹 발표 영상",
+            "message": "발표 영상을 준비 중입니다."
+        }
+    }
+    
+]
