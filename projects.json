@@ -1,4 +1,44 @@
-[
+[{
+        "id": "project7",
+        "tag": "SoC Protocol & UVM",
+        "date": "2025.10.30 ~ 2025.11.18",
+        "title": "AMBA AXI/SPI/I2C 설계 및 SPI UVM 검증 환경 구축",
+        "summary": "AMBA AXI Bus 구조 이해 및 SPI/I2C를 프로토콜 기반으로 설계하고, SystemVerilog 기반 SPI UVM 검증 환경을 구축하여 동작 신뢰성 확보",
+        "tech": "SystemVerilog, UVM, AMBA AXI, SPI, I2C, Vivado, Verdi, Basys3",
+        "github_link": "https://github.com/eunseong-kim-01/AMBAAXI-SPI-I2C-Design-SPI-UVM",
+        "modal_details": {
+            "title": "AXI Bus, SPI, I2C 프로토콜 설계 및 UVM 검증 환경 구축",
+            "summary": "본 프로젝트는 SoC 설계의 핵심 요소인 AXI Bus를 이해하고, 범용 직렬 통신 프로토콜인 SPI와 I2C를 하드웨어(RTL)로 구현한 후, UVM(Universal Verification Methodology)을 적용하여 검증 전문성을 높인 프로젝트입니다. FPGA 보드를 이용한 실제 시연을 통해 설계의 유효성을 검증했습니다.",
+            "implementations": [
+                "AMBA AXI Bus의 5가지 독립 채널(AW, W, B, AR, R) 구조 및 VALID/READY 핸드셰이크 메커니즘을 RTL로 설계 및 시뮬레이션 검증했습니다.",
+                "SPI (Serial Peripheral Interface) 프로토콜 마스터를 설계하고, CPOL/CPHA에 따른 4가지 동작 모드(Mode 0~3)에 대한 루프백(Loopback) 시뮬레이션 검증을 완료했습니다.",
+                "I2C (Inter-Integrated Circuit) 통신 프로토콜 마스터/슬레이브를 설계하고, Address/Data Frame 및 Start/Stop 신호를 포함한 Write/Read 동작 시뮬레이션을 검증했습니다.",
+                "SystemVerilog UVM 기반으로 SPI 프로토콜의 Testbench 환경을 구축했습니다. Sequence, Sequencer, Driver, Monitor, Scoreboard 컴포넌트를 직접 설계하고 연결하여 재사용 가능한 검증 구조를 확립했습니다.",
+                "설계된 SPI와 I2C 모듈을 FPGA(Basys3)상에서 구현하여 FND 및 LED를 제어하는 시연을 통해 실제 하드웨어 동작을 검증했습니다."
+            ],
+            "troubleshooting": [
+                "문제점 1: SPI 통신 시 CPOL/CPHA 모드 변화에 따라 데이터 샘플링 타이밍이 맞지 않아 루프백 테스트에 실패함.",
+                "해결책 1: Verdi와 같은 시뮬레이션 툴을 활용하여 VALID/READY 핸드셰이크 시뮬레이션 파형을 상세 분석함. 특히 클럭(SCLK)의 에지(Edge)와 데이터(MOSI, MISO)가 겹치지 않고 정확히 샘플링되는 시점을 파형으로 확인하며 RTL 로직을 수정하여 4가지 모드 검증을 모두 통과함.",
+                "문제점 2: UVM 컴포넌트 간의 트랜잭션 전달이 예상대로 이루어지지 않아, Driver가 Sequencer로부터 spi_seq_item을 받지 못하거나 Monitor가 캡처한 데이터를 Scoreboard로 보내지 못하는 문제가 발생함.",
+                "해결책 2: Agent와 Environment 클래스의 connect_phase 함수에서 seq_item_port와 seq_item_export 및 Monitor.send와 Scoreboard.recv 간의 연결이 누락되거나 잘못된 것을 확인하고 수정하여 안정적인 UVM Testbench를 완성함."
+            ],
+            "action_video_path": "materials/project7_action_demo.mp4",
+            "learnings": [
+                "AXI, SPI, I2C와 같은 산업 표준 프로토콜을 RTL로 직접 구현하며, 프로토콜의 복잡한 타이밍 제어 및 RTL 코드 작성 능력을 크게 향상시켰습니다.",
+                "SystemVerilog와 UVM을 활용하여 트랜잭션 기반의 Testbench를 처음부터 구축하고, SoC 개발에서 필수적인 재사용 가능한 검증 방법론을 실질적으로 체득했습니다.",
+                "FPGA 시연 단계에서 발생한 문제를 해결하기 위해 로직 분석기(Logic Analyzer)를 활용하여 신호 파형을 직접 관찰했습니다. 이를 통해 하드웨어와 소프트웨어 간의 문제를 분리하고 해결하는 디버깅 능력을 길렀습니다.",
+                "향후 계획으로 현재 구축된 UVM 환경에 Functional Coverage를 추가하여 테스트 케이스의 검증 완성도(Coverage)를 정량적으로 확인하는 프로세스를 적용할 예정입니다."
+            ]
+        },
+        "modal_ppt": {
+            "title": "AMBA AXI/SPI/I2C 설계 및 UVM 검증 발표 자료",
+            "path": "materials/SoC_AXI_SPI_I2C_Design_UVM.pdf"
+        },
+        "modal_video": {
+            "title": "SPI/I2C FPGA 발표 영상",
+            "video_path": "materials/project7_action_speak.mkv"
+        }
+    },
     {
         "id": "project6",
         "tag": "CPU & APB 설계",
@@ -33,7 +73,7 @@
             "path": "materials/RISCV_RV32I_CPU_MultiCycle 및 AMBA_APB_Peripheral 설계_발표자료.pdf"
         },
         "modal_video": {
-            "title": "RISC-V Multi-Cycle 및 AMBA APB Peripheral 설계 시연 영상",
+            "title": "RISC-V Multi-Cycle 및 AMBA APB Peripheral 발표 영상",
             "video_path": "materials/RISCV_RV32I_CPU_MultiCycle 및 AMBA_APB_Peripheral 설계_발표영상.mkv"
         }
     },
@@ -167,7 +207,6 @@
                 "문제점 2: UART 명령어 입력 시, 한 번의 입력에도 불구하고 해당 명령이 매 클럭마다 반복 실행되는 오작동 발생 .",
                 "해결책 2: UART Rx FIFO의 'rx_empty' 신호 변화를 감지하는 Edge Detector를 구현하여, FIFO에 새로운 데이터가 들어오는 순간에만 1 클럭 동안 유지되는 Pulse 신호(w_rx_not_empty_tick)를 생성하고 Interpreter가 이 Pulse 신호에만 반응하도록 수정하여 해결."
             ],
-            "action_video_path": "materials/project2_action_demo.mp4",
             "learnings": [
                 "UART 통신 프로토콜을 이해하고 Verilog로 직접 구현하는 경험을 쌓았습니다.",
                 "다중 입력 소스(물리 버튼/스위치, UART)를 처리하고 제어 우선순위를 관리하는 로직 설계 방법을 학습했습니다.",
