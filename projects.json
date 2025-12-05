@@ -49,7 +49,7 @@
                     ]
                 }
             ],
-            "action_video_path": "materials/251205_vga_동작영상.mp4",
+            "action_video_path": "materials/project8_action_demo.mp4",
             "learnings": [
                 "LUT와 BRAM 등 FPGA 하드웨어 리소스의 한계를 체감하고, 이를 극복하기 위한 메모리 최적화 설계(Line Buffer)의 중요성을 배웠습니다.",
                 "불안정한 카메라 입력(노이즈, 조명 변화)을 하드웨어 로직(Adaptive Threshold, Hold Cnt)으로 보정하며 실세계 데이터 처리의 어려움과 해결책을 경험했습니다.",
@@ -365,3 +365,4 @@
     }
 
 ]
+
