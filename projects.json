@@ -1,4 +1,71 @@
-[{
+[
+    {
+        "id": "project8",
+        "tag": "FPGA 영상 처리 & 게임",
+        "date": "2025.11.19 ~ 2025.12.05 (4인 팀 프로젝트)",
+        "title": "Real-time VGA Processing: Filter & Motion Game (VGA 기반 필터 및 모션 게임)",
+        "summary": "OV7670 카메라와 FPGA를 활용하여 실시간 4분할 영상 필터(Retro, Mirror 등)와 모션 감지형 미니게임을 구현한 인터랙티브 시스템",
+        "tech": "SystemVerilog, Verilog, Vivado, Basys3, OV7670, VGA",
+        "github_link": "https://github.com/eunseong-kim-01/Real-time-VGA-Processing-Filter-Motion-Game",
+        "modal_details": {
+            "title": "Real-time VGA Processing: Filter & Motion Game (영상 처리 및 모션 게임)",
+            "summary": "본 프로젝트는 OV7670 카메라로 입력받은 영상을 실시간으로 처리하여 4가지 필터(Sobel, Morphology, Retro, Gaussian)를 Quad View로 출력하거나, 카툰 필터로 변환하는 시스템입니다. 또한, 색상 인식 알고리즘을 활용한 모션 감지 청기백기 게임을 탑재하여 인터랙티브 기능을 구현했습니다. 조장으로서 필터 로직 구현, 디스플레이 오버레이 설계 및 전체 시스템 통합을 주도했습니다.",
+            "roles": [
+                "조장: 프로젝트 일정 관리 및 모듈 통합 주도",
+                "Retro Filter 설계: 색상 비트 축소(Quantization)와 좌표 조작(Pixelation)을 통한 8-bit 감성 구현",
+                "Mirror Filter 설계: 메모리 주소 변환 알고리즘을 적용하여 실시간 좌우/상하 대칭(데칼코마니) 효과 구현",
+                "Display Overlay: Bitmap Font와 Logic 기반의 실시간 점수/상태 오버레이(UI) 구현",
+                "System Integration: VGA Controller, Camera I/F, Filter, Game 모듈 통합 및 모드 전환 로직 설계"
+            ],
+            "implementations": [
+                "Line Buffer(3x3 Window) 기반의 실시간 영상 처리 파이프라인 구축 (Gaussian, Sobel 등)",
+                "화면을 4분할하여 서로 다른 필터 효과를 동시에 보여주는 Quad View MUX 설계",
+                "OV7670 카메라 입력(RGB565)을 FPGA 처리에 적합한 RGB444 포맷으로 변환 및 Frame Buffer 동기화",
+                "특정 영역의 색상(Red, Green, Blue)을 실시간으로 감지하여 점수를 획득하는 반응형 미니게임 로직 구현"
+            ],
+            "troubleshooting": [
+                {
+                    "issue": "문제점 1: 미니게임 동작 시 카메라 클럭(pclk)과 시스템 클럭(sys_clk) 간의 CDC 문제로 정답 인식 실패(Sampling Miss) 발생.",
+                    "solution": "해결책 1: FSM 동작 클럭을 sys_clk로 단일화하고, 감지 신호에 Hold Counter를 적용하여 Pulse 폭을 확장함으로써 샘플링 마진을 확보함.",
+                    "images": [
+                        "materials/p8_trb_cdc_waveform.png",
+                        "materials/p8_trb_cdc_schematic.png"
+                    ]
+                },
+                {
+                    "issue": "문제점 2: Cartoon Filter 구현 시 Frame Buffer를 사용하여 엣지를 검출하려 했으나 FPGA 내부 BRAM 용량 초과 발생 (121%).",
+                    "solution": "해결책 2: 3x3 윈도우 방식의 Line Buffer 구조로 설계를 변경하여 필요한 행 데이터만 저장함으로써 메모리 사용량을 96%로 절감.",
+                    "images": [
+                        "materials/p8_trb_bram_utilization.png",
+                        "materials/p8_trb_linebuffer_diagram.png"
+                    ]
+                },
+                {
+                    "issue": "문제점 3: 게임 UI(Overlay)의 색상이 카메라 입력 색상과 겹쳐 오인식(Self-detection)되는 현상 발생.",
+                    "solution": "해결책 3: 색상 감지 영역(Region Detect)의 좌표와 UI 오버레이가 출력되는 좌표를 물리적으로 분리하여 상호 간섭을 원천 차단함.",
+                    "images": [
+                        "materials/p8_trb_overlay_glitch.png",
+                        "materials/p8_trb_coord_separation.png"
+                    ]
+                }
+            ],
+            "action_video_path": "materials/251205_vga_동작영상.mp4",
+            "learnings": [
+                "LUT와 BRAM 등 FPGA 하드웨어 리소스의 한계를 체감하고, 이를 극복하기 위한 메모리 최적화 설계(Line Buffer)의 중요성을 배웠습니다.",
+                "불안정한 카메라 입력(노이즈, 조명 변화)을 하드웨어 로직(Adaptive Threshold, Hold Cnt)으로 보정하며 실세계 데이터 처리의 어려움과 해결책을 경험했습니다.",
+                "조장으로서 4분할 필터, 게임, 제어부 등 각 파트를 통합하는 과정에서 인터페이스 정의와 소통의 중요성을 깨달았습니다."
+            ]
+        },
+        "modal_ppt": {
+            "title": "VGA 기반 필터 및 게임 시스템 발표 자료",
+            "path": "materials/251205_vga_발표자료_pdf.pdf"
+        },
+        "modal_video": {
+            "title": "VGA 기반 필터 및 게임 시스템 발표 영상",
+            "message": "발표 영상을 준비 중입니다."
+        }
+    },
+    {
         "id": "project7",
         "tag": "SoC Protocol & UVM",
         "date": "2025.10.30 ~ 2025.11.18",
@@ -17,10 +84,16 @@
                 "설계된 SPI와 I2C 모듈을 FPGA(Basys3)상에서 구현하여 FND 및 LED를 제어하는 시연을 통해 실제 하드웨어 동작을 검증했습니다."
             ],
             "troubleshooting": [
-                "문제점 1: SPI 통신 시 CPOL/CPHA 모드 변화에 따라 데이터 샘플링 타이밍이 맞지 않아 루프백 테스트에 실패함.",
-                "해결책 1: Verdi와 같은 시뮬레이션 툴을 활용하여 VALID/READY 핸드셰이크 시뮬레이션 파형을 상세 분석함. 특히 클럭(SCLK)의 에지(Edge)와 데이터(MOSI, MISO)가 겹치지 않고 정확히 샘플링되는 시점을 파형으로 확인하며 RTL 로직을 수정하여 4가지 모드 검증을 모두 통과함.",
-                "문제점 2: UVM 컴포넌트 간의 트랜잭션 전달이 예상대로 이루어지지 않아, Driver가 Sequencer로부터 spi_seq_item을 받지 못하거나 Monitor가 캡처한 데이터를 Scoreboard로 보내지 못하는 문제가 발생함.",
-                "해결책 2: Agent와 Environment 클래스의 connect_phase 함수에서 seq_item_port와 seq_item_export 및 Monitor.send와 Scoreboard.recv 간의 연결이 누락되거나 잘못된 것을 확인하고 수정하여 안정적인 UVM Testbench를 완성함."
+                {
+                    "issue": "문제점 1: SPI 통신 시 CPOL/CPHA 모드 변화에 따라 데이터 샘플링 타이밍이 맞지 않아 루프백 테스트에 실패함.",
+                    "solution": "해결책 1: Verdi와 같은 시뮬레이션 툴을 활용하여 VALID/READY 핸드셰이크 시뮬레이션 파형을 상세 분석함. 특히 클럭(SCLK)의 에지(Edge)와 데이터(MOSI, MISO)가 겹치지 않고 정확히 샘플링되는 시점을 파형으로 확인하며 RTL 로직을 수정하여 4가지 모드 검증을 모두 통과함.",
+                    "images": []
+                },
+                {
+                    "issue": "문제점 2: UVM 컴포넌트 간의 트랜잭션 전달이 예상대로 이루어지지 않아, Driver가 Sequencer로부터 spi_seq_item을 받지 못하거나 Monitor가 캡처한 데이터를 Scoreboard로 보내지 못하는 문제가 발생함.",
+                    "solution": "해결책 2: Agent와 Environment 클래스의 connect_phase 함수에서 seq_item_port와 seq_item_export 및 Monitor.send와 Scoreboard.recv 간의 연결이 누락되거나 잘못된 것을 확인하고 수정하여 안정적인 UVM Testbench를 완성함.",
+                    "images": []
+                }
             ],
             "action_video_path": "materials/project7_action_demo.mp4",
             "learnings": [
@@ -58,8 +131,11 @@
                 "C언어 Application을 컴파일하여 ROM에 탑재 및 FPGA 보드 시연 (LED, FND 제어) "
             ],
             "troubleshooting": [
-                "문제점: C언어의 문자열(\"Stop\") 전송 시 하드웨어(UART Peripheral)가 수신하지 못함. 원인은 CPU가 문자열의 주소(Pointer)를 보낸 반면, UART 모듈은 8비트 문자(Character) 하나만 받을 수 있었기 때문.",
-                "해결책: C언어에서 한 글자씩 순차적으로 전송하고 대기하는 `uart_send_string` 함수를 구현하여 해결."
+                {
+                    "issue": "문제점: C언어의 문자열(\"Stop\") 전송 시 하드웨어(UART Peripheral)가 수신하지 못함. 원인은 CPU가 문자열의 주소(Pointer)를 보낸 반면, UART 모듈은 8비트 문자(Character) 하나만 받을 수 있었기 때문.",
+                    "solution": "해결책: C언어에서 한 글자씩 순차적으로 전송하고 대기하는 `uart_send_string` 함수를 구현하여 해결.",
+                    "images": []
+                }
             ],
             "action_video_path": "materials/project6_action_demo.mp4",
             "learnings": [
@@ -95,10 +171,16 @@
                 "명령어 타입별 시뮬레이션을 통해 CPU의 기능적 정확성을 검증했습니다."
             ],
             "troubleshooting": [
-                "문제점 1: R-type 명령어(SLL, XOR 등) 시뮬레이션 중, 분기(branch)와 상관없는데도 btaken 신호가 1로 활성화되는 불필요한 신호 변화 발생.",
-                "해결책 1: Control Unit의 btaken 신호 생성 로직에서 `if (branch)` 조건을 추가하여, branch 관련 명령어가 아닐 때는 btaken 신호가 항상 0이 되도록 수정 .",
-                "문제점 2: `addi x0, x5, 100` 명령어 실행 시, RISC-V ISA 규격상 쓰기가 무시되어야 하는 x0 레지스터에 105 값이 쓰여지는 오류 발생 .",
-                "해결책 2: Register File 모듈의 쓰기 로직에 `if (reg_wr_en && (WA != 5'b0))` 조건을 추가하여, 목적지 레지스터 주소(WA)가 0 (x0 레지스터)일 경우에는 쓰기 동작을 명시적으로 무시하도록 수정 ."
+                {
+                    "issue": "문제점 1: R-type 명령어(SLL, XOR 등) 시뮬레이션 중, 분기(branch)와 상관없는데도 btaken 신호가 1로 활성화되는 불필요한 신호 변화 발생.",
+                    "solution": "해결책 1: Control Unit의 btaken 신호 생성 로직에서 `if (branch)` 조건을 추가하여, branch 관련 명령어가 아닐 때는 btaken 신호가 항상 0이 되도록 수정 .",
+                    "images": []
+                },
+                {
+                    "issue": "문제점 2: `addi x0, x5, 100` 명령어 실행 시, RISC-V ISA 규격상 쓰기가 무시되어야 하는 x0 레지스터에 105 값이 쓰여지는 오류 발생 .",
+                    "solution": "해결책 2: Register File 모듈의 쓰기 로직에 `if (reg_wr_en && (WA != 5'b0))` 조건을 추가하여, 목적지 레지스터 주소(WA)가 0 (x0 레지스터)일 경우에는 쓰기 동작을 명시적으로 무시하도록 수정 .",
+                    "images": []
+                }
             ],
             "learnings": [
                 "CPU의 동작 원리와 명령어 처리 과정을 깊이 있게 이해할 수 있었습니다 .",
@@ -130,9 +212,11 @@
                 "SystemVerilog 기반의 UART 기능 검증 환경 구축"
             ],
             "troubleshooting": [
-                "문제점: UART Top 모듈(tb_uart_top) 검증 시, 첫 번째 데이터 전송에 대한 Loopback 테스트만 실패하고 나머지는 성공하는 현상 발생 . 원본 데이터 0x0a (0000_1010) 전송 시 0x85 (1000_0101)가 수신됨.",
-                "원인 분석: Reset 직후 첫 데이터 전송 시 DUT 안정화 시간이 부족하여 Monitor의 TX Start bit 감지가 1 클럭 지연됨. 이로 인해 전체 데이터 프레임이 1비트씩 밀려서(shift) 잘못된 데이터(0x85)가 수신됨 .",
-                "해결책: Reset 직후 DUT 내부 안정화를 위해 충분한 대기 시간(100 클럭 사이클)을 추가하여 문제 해결 ."
+                {
+                    "issue": "문제점: UART Top 모듈(tb_uart_top) 검증 시, 첫 번째 데이터 전송에 대한 Loopback 테스트만 실패하고 나머지는 성공하는 현상 발생 . 원본 데이터 0x0a (0000_1010) 전송 시 0x85 (1000_0101)가 수신됨.\n원인 분석: Reset 직후 첫 데이터 전송 시 DUT 안정화 시간이 부족하여 Monitor의 TX Start bit 감지가 1 클럭 지연됨. 이로 인해 전체 데이터 프레임이 1비트씩 밀려서(shift) 잘못된 데이터(0x85)가 수신됨 .",
+                    "solution": "해결책: Reset 직후 DUT 내부 안정화를 위해 충분한 대기 시간(100 클럭 사이클)을 추가하여 문제 해결 .",
+                    "images": []
+                }
             ],
             "learnings": [
                 "Bottom-Up 검증 전략을 적용하여 서브 모듈(UART_TX, UART_RX, FIFO)부터 검증하고 상위 모듈(UART_TOP)을 검증함으로써 효율적인 디버깅 및 검증 환경 구축 경험 ."
@@ -163,10 +247,16 @@
                 "모든 센서 및 기능 모듈로부터의 데이터를 통합하여 처리하고 출력(FND, LED, UART)하는 Top 모듈 로직 설계"
             ],
             "troubleshooting": [
-                "문제점 1: 모드 변경(예: Watch -> SR04) 시 MUX로 FND 출력을 제어했음에도 이전 모드의 값이 FND에 남아있는 현상 발생.",
-                "해결책 1: 각 모듈(Watch/Stopwatch, SR04, DHT11)의 enable 신호가 비활성화될 때 내부 상태나 출력이 리셋되도록 수정. Top 모듈에서 모드 변경 시 해당 모듈의 리셋 신호와 ~enable 신호를 OR 게이트로 연결하여 모드가 바뀔 때마다 값이 초기화되도록 함.",
-                "문제점 2: 초음파 거리 계산 로직(`dist_reg / 58`)을 조합 로직으로 구현했을 때 Vivado에서 Timing Violation Critical Warning 발생. WNS: -1.627 ns.",
-                "해결책 2: 나눗셈 연산을 두 단계의 파이프라인으로 나누어 처리. 첫 번째 클럭에서 거리 값(dist_reg)을 계산하고, 다음 클럭에서 나눗셈(`dist_reg / 58`)을 수행하여 결과를 레지스터(dist_div_reg)에 저장한 후 출력하도록 수정하여 타이밍 제약 만족 . WNS: 3.866 ns."
+                {
+                    "issue": "문제점 1: 모드 변경(예: Watch -> SR04) 시 MUX로 FND 출력을 제어했음에도 이전 모드의 값이 FND에 남아있는 현상 발생.",
+                    "solution": "해결책 1: 각 모듈(Watch/Stopwatch, SR04, DHT11)의 enable 신호가 비활성화될 때 내부 상태나 출력이 리셋되도록 수정. Top 모듈에서 모드 변경 시 해당 모듈의 리셋 신호와 ~enable 신호를 OR 게이트로 연결하여 모드가 바뀔 때마다 값이 초기화되도록 함.",
+                    "images": []
+                },
+                {
+                    "issue": "문제점 2: 초음파 거리 계산 로직(`dist_reg / 58`)을 조합 로직으로 구현했을 때 Vivado에서 Timing Violation Critical Warning 발생. WNS: -1.627 ns.",
+                    "solution": "해결책 2: 나눗셈 연산을 두 단계의 파이프라인으로 나누어 처리. 첫 번째 클럭에서 거리 값(dist_reg)을 계산하고, 다음 클럭에서 나눗셈(`dist_reg / 58`)을 수행하여 결과를 레지스터(dist_div_reg)에 저장한 후 출력하도록 수정하여 타이밍 제약 만족 . WNS: 3.866 ns.",
+                    "images": []
+                }
             ],
             "action_video_path": "materials/project3_action_demo.mp4",
             "learnings": [
@@ -187,12 +277,12 @@
         "id": "project2",
         "tag": "하이브리드 제어",
         "date": "2025.08.04 ~ 08.18",
-        "title": "하이브리드 제어 디지털 시계 &amp; 스톱워치 설계",
+        "title": "하이브리드 제어 디지털 시계 & 스톱워치 설계",
         "summary": "FPGA 보드의 버튼과 PC의 UART 통신을 이용해 제어하는 디지털 시계 및 스톱워치 설계",
         "tech": "Verilog, Vivado, Basys3",
         "github_link": "https://github.com/eunseong-kim-01/UART_Watch-Stopwatch",
         "modal_details": {
-            "title": "하이브리드 제어 디지털 시계 &amp; 스톱워치",
+            "title": "하이브리드 제어 디지털 시계 & 스톱워치",
             "summary": "FPGA 보드의 버튼/스위치와 PC의 UART 통신을 이용해 제어하는 디지털 시계 및 스톱워치입니다. 두 제어 방식 간의 우선순위를 설정하여 안정적인 동작을 구현했습니다 .",
             "implementations": [
                 "FPGA 보드의 버튼(Debounce 처리)과 PC의 UART 통신을 이용한 Watch/Stopwatch 제어 기능 구현 .",
@@ -202,10 +292,16 @@
                 "7-Segment Display에 시간 정보 표시 기능 구현."
             ],
             "troubleshooting": [
-                "문제점 1: 물리 스위치를 통한 모드 전환과 UART 명령어를 통한 모드 전환 간의 충돌로 인해 모드 변경 오류 발생 .",
-                "해결책 1: UART로 모드 전환 명령('m') 수신 시 'pc_mode_lock' 플래그를 설정하여, 이후 물리 스위치의 상태 변경은 다음 리셋 전까지 무시하도록 PC 제어에 우선권을 부여하여 해결.",
-                "문제점 2: UART 명령어 입력 시, 한 번의 입력에도 불구하고 해당 명령이 매 클럭마다 반복 실행되는 오작동 발생 .",
-                "해결책 2: UART Rx FIFO의 'rx_empty' 신호 변화를 감지하는 Edge Detector를 구현하여, FIFO에 새로운 데이터가 들어오는 순간에만 1 클럭 동안 유지되는 Pulse 신호(w_rx_not_empty_tick)를 생성하고 Interpreter가 이 Pulse 신호에만 반응하도록 수정하여 해결."
+                {
+                    "issue": "문제점 1: 물리 스위치를 통한 모드 전환과 UART 명령어를 통한 모드 전환 간의 충돌로 인해 모드 변경 오류 발생 .",
+                    "solution": "해결책 1: UART로 모드 전환 명령('m') 수신 시 'pc_mode_lock' 플래그를 설정하여, 이후 물리 스위치의 상태 변경은 다음 리셋 전까지 무시하도록 PC 제어에 우선권을 부여하여 해결.",
+                    "images": []
+                },
+                {
+                    "issue": "문제점 2: UART 명령어 입력 시, 한 번의 입력에도 불구하고 해당 명령이 매 클럭마다 반복 실행되는 오작동 발생 .",
+                    "solution": "해결책 2: UART Rx FIFO의 'rx_empty' 신호 변화를 감지하는 Edge Detector를 구현하여, FIFO에 새로운 데이터가 들어오는 순간에만 1 클럭 동안 유지되는 Pulse 신호(w_rx_not_empty_tick)를 생성하고 Interpreter가 이 Pulse 신호에만 반응하도록 수정하여 해결.",
+                    "images": []
+                }
             ],
             "learnings": [
                 "UART 통신 프로토콜을 이해하고 Verilog로 직접 구현하는 경험을 쌓았습니다.",
@@ -214,11 +310,11 @@
             ]
         },
         "modal_ppt": {
-            "title": "하이브리드 제어 디지털 시계 &amp; 스톱워치 설계 발표 자료",
+            "title": "하이브리드 제어 디지털 시계 & 스톱워치 설계 발표 자료",
             "path": "materials/hybrid_control_clock.pdf"
         },
         "modal_video": {
-            "title": "하이브리드 제어 디지털 시계 &amp; 스톱워치 설계 발표 영상",
+            "title": "하이브리드 제어 디지털 시계 & 스톱워치 설계 발표 영상",
             "message": "발표 영상을 준비 중입니다."
         }
     },
@@ -240,12 +336,18 @@
                 "발표"
             ],
             "troubleshooting": [
-                "문제점 1: 외식 메뉴 입력 시 네이버 지도 검색 결과를 크롤링하는 과정에서 TimeoutException 발생 . 지도 UI가 먼저 로딩되고 다른 HTML 정보 로딩이 지연되어 CSS 선택자를 찾지 못하는 문제 발생.",
-                "해결책 1: 직접 지도 페이지를 크롤링하는 대신, 네이버 검색 포털에서 '음식 이름 + 맛집'을 검색한 후, 지도 서비스로 연결되는 링크(`.bSoi3>a` 태그의 `href` 속성)만 추출하여 사용자에게 제공하는 방식으로 변경하여 해결.",
-                "문제점 2: 레시피 사이트 크롤링 시, 음식 목록(`span.link`)을 가져올 때 페이지 넘김 버튼 요소까지 함께 포함되어 다음 페이지로 넘어가지 못하고 11페이지로 이동 후 Timeout 발생하는 문제 발생.",
-                "해결책 2: CSS 선택자를 더 구체적으로 명시하여(`span.link > a[href*='goRecipeView']`) 페이지 넘김 버튼 요소를 제외하고 실제 음식 링크 요소만 선택하도록 수정하여 해결."
+                {
+                    "issue": "문제점 1: 외식 메뉴 입력 시 네이버 지도 검색 결과를 크롤링하는 과정에서 TimeoutException 발생 . 지도 UI가 먼저 로딩되고 다른 HTML 정보 로딩이 지연되어 CSS 선택자를 찾지 못하는 문제 발생.",
+                    "solution": "해결책 1: 직접 지도 페이지를 크롤링하는 대신, 네이버 검색 포털에서 '음식 이름 + 맛집'을 검색한 후, 지도 서비스로 연결되는 링크(`.bSoi3>a` 태그의 `href` 속성)만 추출하여 사용자에게 제공하는 방식으로 변경하여 해결.",
+                    "images": []
+                },
+                {
+                    "issue": "문제점 2: 레시피 사이트 크롤링 시, 음식 목록(`span.link`)을 가져올 때 페이지 넘김 버튼 요소까지 함께 포함되어 다음 페이지로 넘어가지 못하고 11페이지로 이동 후 Timeout 발생하는 문제 발생.",
+                    "solution": "해결책 2: CSS 선택자를 더 구체적으로 명시하여(`span.link > a[href*='goRecipeView']`) 페이지 넘김 버튼 요소를 제외하고 실제 음식 링크 요소만 선택하도록 수정하여 해결.",
+                    "images": []
+                }
             ],
-            "action_video_path": "materials/project1_action_demo.mp4", 
+            "action_video_path": "materials/project1_action_demo.mp4",
             "learnings": [
                 "Python Flask를 이용한 웹 서버 구축 및 HTML 연동 방법을 배웠습니다.",
                 "Selenium을 활용한 동적 웹 페이지 크롤링 기법과 데이터 처리(Pandas, SQLite) 과정을 익혔습니다.",

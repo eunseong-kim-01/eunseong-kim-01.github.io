@@ -134,14 +134,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 // --- [END OF MODIFIED PART 1] ---
 
-                // --- [MODIFIED PART 2 - Was NEW PART 1 before] ---
+                // --- [MODIFIED PART 2 - Troubleshooting with Image Support] ---
                 // Create HTML for Troubleshooting if it exists
                 let troubleshootingHTML = '';
                 if (details.troubleshooting && details.troubleshooting.length > 0) {
+                    // 트러블슈팅 항목들을 하나씩 처리하여 리스트 아이템 생성
+                    const troubleItems = details.troubleshooting.map(item => {
+                        // 1. 데이터가 객체인 경우 (이미지 포함된 새 형식)
+                        if (typeof item === 'object' && item !== null) {
+                            let imagesHTML = '';
+                            if (item.images && item.images.length > 0) {
+                                imagesHTML = `<div class="project-images" style="display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap;">
+                                    ${item.images.map(img => `<img src="${img}" alt="troubleshooting" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">`).join('')}
+                                </div>`;
+                            }
+                            
+                            return `<li style="margin-bottom: 1.5rem;">
+                                <p style="margin-bottom: 5px;"><strong style="color: #e53935;">${item.issue}</strong></p>
+                                <p style="color: #1e88e5; margin-top: 0;">${item.solution}</p>
+                                ${imagesHTML}
+                            </li>`;
+                        } 
+                        // 2. 데이터가 문자열인 경우 (기존 형식 호환)
+                        else {
+                            return `<li>${item}</li>`;
+                        }
+                    }).join('');
+
                     troubleshootingHTML = `
                         <div class="project-details">
                             <p><strong>트러블슈팅:</strong></p>
-                            <ul>${createListItems(details.troubleshooting)}</ul>
+                            <ul style="list-style: none; padding-left: 0;">${troubleItems}</ul>
                         </div>
                     `;
                 }
