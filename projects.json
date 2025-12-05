@@ -58,7 +58,7 @@
         },
         "modal_ppt": {
             "title": "VGA 기반 필터 및 게임 시스템 발표 자료",
-            "path": "materials/251205_vga_발표자료_pdf.pdf"
+            "path": "materials/project8_pt.pdf"
         },
         "modal_video": {
             "title": "VGA 기반 필터 및 게임 시스템 발표 영상",
@@ -363,4 +363,5 @@
             "message": "발표 영상을 준비 중입니다."
         }
     }
+
 ]
