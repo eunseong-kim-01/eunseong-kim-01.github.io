@@ -58,11 +58,11 @@ body {
 
 /* Sidebar - Always Open */
 .sidebar {
-    width: 150px;
+    width: 170px;
     /* Width when open */
     background: var(--card-bg);
-    padding: 1.5rem;      /* 변경: 전체적인 내부 여백 줄이기 */
-    padding-top: 2.5rem;  /* 변경: 위쪽 여백 줄이기 */
+    padding: 1.5rem;      
+    padding-top: 2.5rem; 
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     position: fixed;
     height: calc(100vh - 50px);
@@ -75,16 +75,19 @@ body {
 
 .sidebar .profile {
     text-align: center;
-    margin-bottom: 1rem; /* 변경: 프로필 아래 여백 줄이기 */
+    margin-bottom: 1rem; 
     display: block;
 }
 
 .sidebar .profile-img {
-    width: 100px;
-    height: 100px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
-    background-color: var(--border-color);
     margin: 0 auto 10px;
+    
+    object-fit: cover;  
+    display: block;
+    border: 2px solid var(--border-color); 
 }
 
 .sidebar .description {
@@ -97,7 +100,7 @@ body {
 .sidebar-nav ul {
     list-style: none;
     padding: 0;
-    margin-top: 1.5rem; /* 변경: 네비게이션 위쪽 여백 줄이기 */
+    margin-top: 1.5rem; 
 }
 
 .sidebar-nav li a:hover {
@@ -106,9 +109,9 @@ body {
 
 .sidebar-nav li a {
     display: flex;
-    align-items: center;      /* 변경: 아이콘과 텍스트를 세로 중앙 정렬 */
+    align-items: center;      
     gap: 10px;
-    padding: 10px 15px; /* 변경: 상하 패딩 다시 줄여보기 */
+    padding: 10px 15px; 
     text-decoration: none;
     color: var(--primary-color);
     border-radius: 5px;
@@ -117,22 +120,21 @@ body {
 
 .sidebar-nav .icon {
     font-size: 1.2em;
-    line-height: 1; /* 아이콘 자체 줄간격 조정 */
+    line-height: 1;
 }
 
 .sidebar-nav .nav-text {
     visibility: visible;
     opacity: 1;
     font-size: 1rem;
-    line-height: 1.2; /* 텍스트 줄 간격 명시적 설정 */
+    line-height: 1.2;
 }
 
 /* Main Content - Always Shifted */
 .content {
     flex-grow: 1;
     padding: 2rem;
-    margin-left: 200px;
-    /* Fixed margin for open sidebar (150px width + 50px gap) */
+    margin-left: 230px;
 }
 
 .section {
@@ -586,15 +588,13 @@ body {
         font-size: 0.9em;
     }
 
-    /* --- [수정] Footer Info Adjustments for Small Screens --- */
     .footer-info {
-        /* display: none; */  /* 이 부분을 삭제하거나 주석 처리 */
-        margin-top: 1rem;     /* 작은 화면에서 위쪽 여백 더 줄이기 */
-        padding-left: 8px;    /* 작은 화면에서 왼쪽 여백 더 줄이기 */
-        font-size: 0.65em;    /* 작은 화면에서 글자 크기 더 줄이기 */
-        line-height: 1.2;     /* 작은 화면에서 줄 간격 더 줄이기 */
+        margin-top: 1rem;     
+        padding-left: 8px;    
+        font-size: 0.65em;    
+        line-height: 1.2;     
         color: #888;
-        overflow-wrap: break-word; /* 단어 깨짐 방지 */
+        overflow-wrap: break-word; 
     }
 
     .footer-info p {

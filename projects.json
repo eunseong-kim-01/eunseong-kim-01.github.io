@@ -28,28 +28,28 @@
                     "issue": "문제점 1: 미니게임 동작 시 카메라 클럭(pclk)과 시스템 클럭(sys_clk) 간의 CDC 문제로 정답 인식 실패(Sampling Miss) 발생.",
                     "solution": "해결책 1: FSM 동작 클럭을 sys_clk로 단일화하고, 감지 신호에 Hold Counter를 적용하여 Pulse 폭을 확장함으로써 샘플링 마진을 확보함.",
                     "images": [
-                        "materials/p8_trb_cdc_waveform.png",
-                        "materials/p8_trb_cdc_schematic.png"
+                        "materials/project8/p8_trb_cdc_waveform.png",
+                        "materials/project8/p8_trb_cdc_schematic.png"
                     ]
                 },
                 {
                     "issue": "문제점 2: Cartoon Filter 구현 시 Frame Buffer를 사용하여 엣지를 검출하려 했으나 FPGA 내부 BRAM 용량 초과 발생 (121%).",
                     "solution": "해결책 2: 3x3 윈도우 방식의 Line Buffer 구조로 설계를 변경하여 필요한 행 데이터만 저장함으로써 메모리 사용량을 96%로 절감.",
                     "images": [
-                        "materials/p8_trb_bram_utilization.png",
-                        "materials/p8_trb_linebuffer_diagram.png"
+                        "materials/project8/p8_trb_bram_utilization.png",
+                        "materials/project8/p8_trb_linebuffer_diagram.png"
                     ]
                 },
                 {
                     "issue": "문제점 3: 게임 UI(Overlay)의 색상이 카메라 입력 색상과 겹쳐 오인식(Self-detection)되는 현상 발생.",
                     "solution": "해결책 3: 색상 감지 영역(Region Detect)의 좌표와 UI 오버레이가 출력되는 좌표를 물리적으로 분리하여 상호 간섭을 원천 차단함.",
                     "images": [
-                        "materials/p8_trb_overlay_glitch.png",
-                        "materials/p8_trb_coord_separation.png"
+                        "materials/project8/p8_trb_overlay_glitch.png",
+                        "materials/project8/p8_trb_coord_separation.png"
                     ]
                 }
             ],
-            "action_video_path": "materials/project8_action_demo.mp4",
+            "action_video_path": "materials/project8/251205_vga_동작영상.mp4",
             "learnings": [
                 "LUT와 BRAM 등 FPGA 하드웨어 리소스의 한계를 체감하고, 이를 극복하기 위한 메모리 최적화 설계(Line Buffer)의 중요성을 배웠습니다.",
                 "불안정한 카메라 입력(노이즈, 조명 변화)을 하드웨어 로직(Adaptive Threshold, Hold Cnt)으로 보정하며 실세계 데이터 처리의 어려움과 해결책을 경험했습니다.",
@@ -58,7 +58,7 @@
         },
         "modal_ppt": {
             "title": "VGA 기반 필터 및 게임 시스템 발표 자료",
-            "path": "materials/project8_pt.pdf"
+            "path": "materials/project8/251205_vga_발표자료_pdf.pdf"
         },
         "modal_video": {
             "title": "VGA 기반 필터 및 게임 시스템 발표 영상",
@@ -95,7 +95,7 @@
                     "images": []
                 }
             ],
-            "action_video_path": "materials/project7_action_demo.mp4",
+            "action_video_path": "materials/project7/project7_action_demo.mp4",
             "learnings": [
                 "AXI, SPI, I2C와 같은 산업 표준 프로토콜을 RTL로 직접 구현하며, 프로토콜의 복잡한 타이밍 제어 및 RTL 코드 작성 능력을 크게 향상시켰습니다.",
                 "SystemVerilog와 UVM을 활용하여 트랜잭션 기반의 Testbench를 처음부터 구축하고, SoC 개발에서 필수적인 재사용 가능한 검증 방법론을 실질적으로 체득했습니다.",
@@ -105,11 +105,11 @@
         },
         "modal_ppt": {
             "title": "AMBA AXI/SPI/I2C 설계 및 UVM 검증 발표 자료",
-            "path": "materials/SoC_AXI_SPI_I2C_Design_UVM.pdf"
+            "path": "materials/project7/SoC_AXI_SPI_I2C_Design_UVM.pdf"
         },
         "modal_video": {
             "title": "SPI/I2C FPGA 발표 영상",
-            "video_path": "materials/project7_action_speak.mkv"
+            "video_path": "materials/project7/project7_action_speak.mkv"
         }
     },
     {
@@ -137,7 +137,7 @@
                     "images": []
                 }
             ],
-            "action_video_path": "materials/project6_action_demo.mp4",
+            "action_video_path": "materials/project6/project6_action_demo.mp4",
             "learnings": [
                 "프로토콜(APB, UART)의 중요성과 정확한 타이밍(예: PREADY) 준수의 필요성을 하드웨어 동작을 통해 확인했습니다 .",
                 "C언어의 문자열(포인터) 전송과 하드웨어의 8비트 문자 수신 간의 차이를 이해하고, `uart_send_string` 함수를 구현하여 문제를 해결하며 소프트웨어와 하드웨어의 간극을 명확히 이해했습니다 .",
@@ -146,11 +146,11 @@
         },
         "modal_ppt": {
             "title": "RISC-V Multi-Cycle 및 AMBA APB Peripheral 설계 발표 자료",
-            "path": "materials/RISCV_RV32I_CPU_MultiCycle 및 AMBA_APB_Peripheral 설계_발표자료.pdf"
+            "path": "materials/project6/RISCV_RV32I_CPU_MultiCycle 및 AMBA_APB_Peripheral 설계_발표자료.pdf"
         },
         "modal_video": {
             "title": "RISC-V Multi-Cycle 및 AMBA APB Peripheral 발표 영상",
-            "video_path": "materials/RISCV_RV32I_CPU_MultiCycle 및 AMBA_APB_Peripheral 설계_발표영상.mkv"
+            "video_path": "materials/project6/RISCV_RV32I_CPU_MultiCycle 및 AMBA_APB_Peripheral 설계_발표영상.mkv"
         }
     },
     {
@@ -189,7 +189,7 @@
         },
         "modal_ppt": {
             "title": "RISC-V RV32I CPU Core 설계 발표 자료",
-            "path": "materials/RISCV_RV32I_CPU_Core_SIngleCycle.pdf"
+            "path": "materials/project5/RISCV_RV32I_CPU_Core_SIngleCycle.pdf"
         },
         "modal_video": {
             "title": "RISC-V RV32I CPU Core 설계 발표 영상",
@@ -224,7 +224,7 @@
         },
         "modal_ppt": {
             "title": "UART 제어 Counter-10000 설계 및 검증 발표 자료",
-            "path": "materials/UART_Verification.pdf"
+            "path": "materials/project4/UART_Verification.pdf"
         },
         "modal_video": {
             "title": "UART 제어 Counter-10000 설계 및 검증 발표 영상",
@@ -258,7 +258,7 @@
                     "images": []
                 }
             ],
-            "action_video_path": "materials/project3_action_demo.mp4",
+            "action_video_path": "materials/project3/project3_action_demo.mp4",
             "learnings": [
                 "여러 기능을 하나의 시스템으로 통합하는 과정에서 모듈 간 인터페이스 및 제어 신호 설계의 중요성을 학습했습니다.",
                 "하드웨어 설계 시 조합 로직의 복잡성이 타이밍에 미치는 영향을 이해하고 파이프라이닝을 통해 성능을 개선하는 방법을 경험했습니다."
@@ -266,7 +266,7 @@
         },
         "modal_ppt": {
             "title": "다중 센서 통합 제어 시스템 발표 자료",
-            "path": "materials/sensor_watch_stopwatch.pdf"
+            "path": "materials/project3/sensor_watch_stopwatch.pdf"
         },
         "modal_video": {
             "title": "다중 센서 통합 제어 시스템 발표 영상",
@@ -303,6 +303,7 @@
                     "images": []
                 }
             ],
+            "action_video_path": "materials/project2/project2_action_demo.mp4",
             "learnings": [
                 "UART 통신 프로토콜을 이해하고 Verilog로 직접 구현하는 경험을 쌓았습니다.",
                 "다중 입력 소스(물리 버튼/스위치, UART)를 처리하고 제어 우선순위를 관리하는 로직 설계 방법을 학습했습니다.",
@@ -311,7 +312,7 @@
         },
         "modal_ppt": {
             "title": "하이브리드 제어 디지털 시계 & 스톱워치 설계 발표 자료",
-            "path": "materials/hybrid_control_clock.pdf"
+            "path": "materials/project2/hybrid_control_clock.pdf"
         },
         "modal_video": {
             "title": "하이브리드 제어 디지털 시계 & 스톱워치 설계 발표 영상",
@@ -347,7 +348,7 @@
                     "images": []
                 }
             ],
-            "action_video_path": "materials/project1_action_demo.mp4",
+            "action_video_path": "materials/project1/project1_action_demo.mp4",
             "learnings": [
                 "Python Flask를 이용한 웹 서버 구축 및 HTML 연동 방법을 배웠습니다.",
                 "Selenium을 활용한 동적 웹 페이지 크롤링 기법과 데이터 처리(Pandas, SQLite) 과정을 익혔습니다.",
@@ -356,13 +357,11 @@
         },
         "modal_ppt": {
             "title": "재료 맞춤형 레시피 추천 웹 발표 자료",
-            "path": "materials/recipe_recommendation.pdf"
+            "path": "materials/project1/recipe_recommendation.pdf"
         },
         "modal_video": {
             "title": "재료 맞춤형 레시피 추천 웹 발표 영상",
             "message": "발표 영상을 준비 중입니다."
         }
     }
-
 ]
-
