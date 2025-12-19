@@ -180,24 +180,30 @@ document.addEventListener('DOMContentLoaded', () => {
                     `;
                 }
 
-                // --- [MODIFIED PART 3 - Reorder HTML sections] ---
-                // Combine all parts for the final modal content in the NEW order
-                modalContentHTML = `
-                    <div class="modal-header">
-                        <h2>${details.title}</h2>
-                    </div>
-                    <div class="modal-body">
-                        <div class="summary-container">
-                            <strong class="summary-title">요약:</strong>
-                            <span class="summary-text">${details.summary}</span>
-                        </div>
-                        ${rolesHTML}
-                        ${implementationHTML} 
-                        ${actionVideoHTML}      
-                        ${troubleshootingHTML} 
-                        ${learningsHTML}
-                    </div>
-                `;
+                //* main.js 파일의 case 'details' 부분 수정 */
+
+// --- [MODIFIED PART 3 - Reorder HTML sections] ---
+// Combine all parts for the final modal content in the NEW order
+
+// 제목의 '(' 부분을 찾아서 줄바꿈 태그(<br>)를 삽입합니다.
+const formattedTitle = details.title.replace(' (', '<br><span style="font-size: 0.85em; color: #666; font-weight: normal;">(') + (details.title.includes(' (') ? '</span>' : '');
+
+modalContentHTML = `
+    <div class="modal-header">
+        <h2>${formattedTitle}</h2> 
+    </div>
+    <div class="modal-body">
+        <div class="summary-container">
+            <strong class="summary-title">요약:</strong>
+            <span class="summary-text">${details.summary}</span>
+        </div>
+        ${rolesHTML}
+        ${implementationHTML} 
+        ${actionVideoHTML}      
+        ${troubleshootingHTML} 
+        ${learningsHTML}
+    </div>
+`;
                 // --- [END OF MODIFIED PART 3] ---
                 break; // End of case 'details'
 

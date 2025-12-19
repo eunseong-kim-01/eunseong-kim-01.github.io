@@ -1,8 +1,8 @@
 [
     {
         "id": "project8",
-        "tag": "FPGA 영상 처리 & 게임",
-        "date": "2025.11.19 ~ 2025.12.05 (4인 팀 프로젝트)",
+        "tag": "FPGA 영상 처리",
+        "date": "2025.11.19 ~ 12.05 (4인 팀 프로젝트)",
         "title": "Real-time VGA Processing: Filter & Motion Game (VGA 기반 필터 및 모션 게임)",
         "summary": "OV7670 카메라와 FPGA를 활용하여 실시간 4분할 영상 필터(Retro, Mirror 등)와 모션 감지형 미니게임을 구현한 인터랙티브 시스템",
         "tech": "SystemVerilog, Verilog, Vivado, Basys3, OV7670, VGA",
@@ -14,8 +14,7 @@
                 "조장: 프로젝트 일정 관리 및 모듈 통합 주도",
                 "Retro Filter 설계: 색상 비트 축소(Quantization)와 좌표 조작(Pixelation)을 통한 8-bit 감성 구현",
                 "Mirror Filter 설계: 메모리 주소 변환 알고리즘을 적용하여 실시간 좌우/상하 대칭(데칼코마니) 효과 구현",
-                "Display Overlay: Bitmap Font와 Logic 기반의 실시간 점수/상태 오버레이(UI) 구현",
-                "System Integration: VGA Controller, Camera I/F, Filter, Game 모듈 통합 및 모드 전환 로직 설계"
+                "Display Overlay: Bitmap Font와 Logic 기반의 실시간 점수/상태 오버레이(UI) 구현"
             ],
             "implementations": [
                 "Line Buffer(3x3 Window) 기반의 실시간 영상 처리 파이프라인 구축 (Gaussian, Sobel 등)",
@@ -26,11 +25,7 @@
             "troubleshooting": [
                 {
                     "issue": "문제점 1: 미니게임 동작 시 카메라 클럭(pclk)과 시스템 클럭(sys_clk) 간의 CDC 문제로 정답 인식 실패(Sampling Miss) 발생.",
-                    "solution": "해결책 1: FSM 동작 클럭을 sys_clk로 단일화하고, 감지 신호에 Hold Counter를 적용하여 Pulse 폭을 확장함으로써 샘플링 마진을 확보함.",
-                    "images": [
-                        "materials/project8/p8_trb_cdc_waveform.png",
-                        "materials/project8/p8_trb_cdc_schematic.png"
-                    ]
+                    "solution": "해결책 1: FSM 동작 클럭을 sys_clk로 단일화하고, 감지 신호에 Hold Counter를 적용하여 Pulse 폭을 확장함으로써 샘플링 마진을 확보함."
                 },
                 {
                     "issue": "문제점 2: Cartoon Filter 구현 시 Frame Buffer를 사용하여 엣지를 검출하려 했으나 FPGA 내부 BRAM 용량 초과 발생 (121%).",
@@ -42,11 +37,7 @@
                 },
                 {
                     "issue": "문제점 3: 게임 UI(Overlay)의 색상이 카메라 입력 색상과 겹쳐 오인식(Self-detection)되는 현상 발생.",
-                    "solution": "해결책 3: 색상 감지 영역(Region Detect)의 좌표와 UI 오버레이가 출력되는 좌표를 물리적으로 분리하여 상호 간섭을 원천 차단함.",
-                    "images": [
-                        "materials/project8/p8_trb_overlay_glitch.png",
-                        "materials/project8/p8_trb_coord_separation.png"
-                    ]
+                    "solution": "해결책 3: 색상 감지 영역(Region Detect)의 좌표와 UI 오버레이가 출력되는 좌표를 물리적으로 분리하여 상호 간섭을 원천 차단함."
                 }
             ],
             "action_video_path": "materials/project8/251205_vga_동작영상.mp4",
